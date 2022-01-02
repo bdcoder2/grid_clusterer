@@ -1,7 +1,7 @@
 # grid_clusterer v1.5.0
 <p>A grid clusterer for Google maps.</p>
 <p>
-  <img src="snapshot" height=530 width=703 title="Grid Clusterer">
+  <img src="snapshot.jpg" height=530 width=703 title="Grid Clusterer">
 </p>
 <h1>To use:</h1>
 <ol>
