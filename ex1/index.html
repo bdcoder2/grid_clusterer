@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grid Clusterer - Creating data points vs creating Google map markers</title>
+<link rel="preconnect" href="https://ajax.googleapis.com" />
+<link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://apis.google.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans_old:400,500|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700&display=swap">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../js/grid_clusterer.min.js"></script>
+<script src="tester.js"></script>
+<style>
+body, html {
+   background-color: #FFFFFF;
+   margin: 0;
+   padding: 0;
+   font-family: Roboto, Helvetica, sans-serif;
+}
+
+form {
+   border: 1px solid #AAAAAA;
+   margin: 0;
+   padding: 6px;
+}
+
+header {
+   border-bottom: 1px solid #AAAAAA;
+   font-size: 16pt;
+   font-weight: bold;
+   margin: 6px 12px 0 12px;
+   padding: 6px;
+   text-align: center;
+}
+
+li {
+   padding: 4px 0;
+}
+
+main {
+  margin: 0;
+  padding: 6px 12px;
+}
+
+section {
+   margin: 6px 0;
+   padding: 12px;
+}
+
+.map_viewport {
+   height: 256px;
+   width: 100%;
+   position: relative;
+   background: #EFEFEF;
+   display: block;
+   overflow: hidden;
+   border: 1px solid #AAAAAA;
+   margin: 6px 0;
+   padding: 0;
+}
+
+.center_div {
+   margin: 0;
+   padding: 6px;
+   text-align: center;
+}
+</style>
+</head>
+<body>
+   <header>
+      <b><a href="../index.html">Grid Clusterer</a> - Creating data points vs creating Google map markers</b>
+   </header>
+   <main>
+      <section>
+         <p>
+            Nearly every mapping application will use &quot;data points&quot; that contain  
+            latitude and longitude values.  So why not use the latitude and longitude values
+            as input into a clusterer rather than spending time creating Google map markers 
+            for use as input?  The majority of the individual map markers created are never 
+            displayed, which is a waste of memory.
+         </p>
+         <p>
+            In this example, we compare the time required to create &quot;data_point&quot; objects
+            vs creating Google map markers.  The example illustrates the performance gain by 
+            omitting the need to create Google map markers as input to a clusterer.
+         </p>
+         <p>
+            Note we do not display any markers on the map, as we are only measuring the time 
+            to create them.
+         </p>
+         <form id="frm1" onsubmit="return tester_obj.test_submit( event );">
+            <div class="center_div">
+               <b>Enter the number of random data points to create within the map bounds:</b>
+            </div>
+            <div class="center_div">
+               <input type="text" size="7" id="fld_dpc" name="fld_dpc" value="5000"> 
+               <button id="btn1" type="submit">Create New Data Points</button> 
+            </div>
+         </form>
+      </section>
+      <section>
+         <b>Statistics:</b>
+         <ul>
+            <li>Total data points: <span id="ts0"></span></li>
+            <li>Time to create data points: <span id="ts1"></span></li>
+            <li>Time to create Google map markers: <span id="ts2"></span></li>
+            <li>Difference: <span id="ts3"></span></li>
+         </ul>
+         <div class="center_div" id="ts4"></div>
+      </section>
+      <div class="map_viewport" id="mvp"></div>
+   </main>
+   <script>
+      function map_init() {
+         tester_obj = new tester( 'mvp' );
+      }
+   </script>
+   <!-- Async script executes immediately and must be AFTER any DOM elements used in callback. -->
+   <script async src="https://maps.googleapis.com/maps/api/js?callback=map_init&key=AIzaSyA1RpoB4WdH8GQ6odWnELHcnDg6tQi8KWE"></script>
+</body>
+</html>
