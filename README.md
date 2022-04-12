@@ -1,10 +1,10 @@
 # grid_clusterer v1.5.0
 <h2>A grid clusterer for Google maps</h2>
 <ul>
-  <li><a href="https://bdcoder2.github.io/grid_clusterer/index.html" target="_blank">Overview, examples, reference</a>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/index.html">Overview, examples, reference</a>
 </ul>
 <p>
-  <img src="snapshot.jpg" height=530 width=703 title="Grid Clusterer">
+  <a href="https://bdcoder2.github.io/grid_clusterer/index.html"><img src="snapshot.jpg" height=530 width=703 title="Grid Clusterer"></a>
 </p>
 <h2>To download and use locally:</h1>
 <ol>
