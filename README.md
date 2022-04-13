@@ -1,7 +1,14 @@
 # grid_clusterer v1.5.0
 <h2>A grid clusterer for Google maps</h2>
+<p>
+  Use the following links to learn about the grid clusterer:
+</p>
 <ul>
-  <li><a href="https://bdcoder2.github.io/grid_clusterer/index.html">Overview, examples, reference</a>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/ex1/index.html">Creating data points vs creating Google map markers</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/ex0/index.html">Tiles and grid points</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/ex2/index.html">Clusterer configuration options and performance</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/ex3/index.html">Enabling and disabling cluster marker click checks</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/reference.html">Clusterer Reference</a></li>
 </ul>
 <p>
   <a href="https://bdcoder2.github.io/grid_clusterer/index.html"><img src="snapshot.jpg" height=530 width=703 title="Grid Clusterer"></a>
