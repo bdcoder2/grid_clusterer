@@ -2575,7 +2575,7 @@ section {
       
       // Use the tile center lat/lon for the marker position ...
 
-      var marker_position = evt.tile.latlon;
+      var marker_position = evt.tile.bounds.getCenter();
 
       // Use the number of data points (keys) for the title and label ...
       
@@ -2709,7 +2709,7 @@ section {
       
       // Use the grid point center lat/lon for the marker position ...
 
-      var marker_position = evt.grid_point.latlon;
+      var marker_position = evt.grid_point.bounds.getCenter();
 
       // Use the number of data points (keys) for the title and label ...
       
@@ -2779,7 +2779,7 @@ section {
       </section>
    </main>
    <footer>
-      This page was last updated on: 22-Dec-2021
+      This page was last updated on: 22-Jul-2022
    </footer>
 </body>
 </html>
