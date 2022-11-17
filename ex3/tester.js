@@ -46,6 +46,7 @@ class tester {
             if (!this.cluster_marker_click_checks_enabled) {
                 this.data_markers_visible(true);
             }
+            this.map_zoom_level_show(this.map.getZoom());
         };
         let map_opts;
         let clusterer_opts;
@@ -76,9 +77,18 @@ class tester {
         this.map.fitBounds(this.data_bounds);
         // Create data markers ...
         this.data_markers_create();
+        // Get state of radio buttons ...
+        this.cluster_marker_click_checks_enabled = true;
+        let rb_val = $('input[name="fld_cluster_marker_click_checks"]:checked').val();
+        if (rb_val == 1) {
+            this.cluster_marker_click_checks_enabled = true;
+        }
+        else {
+            this.cluster_marker_click_checks_enabled = false;
+        }
         // Create clusterer and load data ...
         clusterer_opts = {
-            cluster_marker_click_check: false,
+            cluster_marker_click_check: this.cluster_marker_click_checks_enabled,
             cluster_marker_click_handler: this.cluster_marker_click_handler,
             tile_borders_visible: true
         };
@@ -104,6 +114,14 @@ class tester {
                 this.cluster_marker_click_checks_enabled = false;
             }
             this.clusterer.configure({ cluster_marker_click_check: this.cluster_marker_click_checks_enabled });
+        });
+        /*
+        Show zoom level and add a listener to show the current
+        zoom level when it changes ...
+        */
+        this.map_zoom_level_show(this.map.getZoom());
+        google.maps.event.addListener(this.map, 'zoom_changed', () => {
+            this.map_zoom_level_show(this.map.getZoom());
         });
     }
     /*
@@ -199,5 +217,23 @@ class tester {
             marker = this.data_markers[i];
             marker.setVisible(is_visible);
         }
+    }
+    /*
+    ---------------------------------------------------------------------
+    Show the map zoom level in the DOM.
+     
+    PARAMETERS:
+     
+       Name: zoom_level
+       Desc: The map zoom level
+     
+    RETURNS:
+     
+       None
+ 
+    ---------------------------------------------------------------------
+    */
+    map_zoom_level_show(zoom_level) {
+        $('#mzl').html(zoom_level.toString());
     }
 }

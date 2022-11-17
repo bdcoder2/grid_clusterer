@@ -55,7 +55,7 @@ section {
 }
 
 .opt_div {
-   margin: 8px 0 12px 20px;
+   margin: 0 0 4px 16px;
    padding: 6px;
 }
 </style>
@@ -65,27 +65,84 @@ section {
       <a href="../index.html"><b>Grid Clusterer</b></a> - Enabling and disabling cluster marker click checks
    </header>
    <main>
+      <div class="map_viewport" id="mvp"></div>
       <section>
-         <b>Choose setting:</b> 
-         <form id="frm2" onsubmit="tester_obj.config_update( event );"> 
-            <input type="radio" id="rbtn1" name="fld_cluster_marker_click_checks" value="0" checked> 
-            <label for="rbtn1">Disable cluster marker click checks</label> - then click the cluster marker
+         Map Zoom Level: <span id="mzl" style="margin: 0 20px 0 0;font-weight:bold;"></span>
+         <p>
+            When cluster marker click checks are enabled (the default), the clusterer will check
+            if the same cluster marker is still present on the map AFTER the click event, and if so, 
+            will zoom in one level.  This can happen when the data points associated with a cluster 
+            marker already &quot;fit&quot; within a map at a given zoom level, as illustrated by the 
+            tests below.
+         </p>
+      </section>
+      <section>
+         <b>Choose a setting</b> 
+         <form id="frm2" onsubmit="tester_obj.config_update( event );">
             <div class="opt_div">
-               Note that the map <b>does not</b> &quot;zoom-in&quot; when the cluster marker is clicked, 
-               even though internally the clusterer calls the Google maps .fitbounds() method.  Because 
-               the bounds of the data points (shown in the tile to illustrate), already fit in the map no
-               change occurs.
+               <input type="radio" id="rbtn2" name="fld_cluster_marker_click_checks" value="1" checked> 
+               <label for="rbtn2">Enable cluster marker click checks</label>
             </div>
-            <input type="radio" id="rbtn2" name="fld_cluster_marker_click_checks" value="1"> 
-            <label for="rbtn2">Enable cluster marker click checks</label> - then click the cluster marker
             <div class="opt_div">
-               When &quot;cluster marker click checks&quot; are enabled, the clusterer will check if 
-               the tile containing the cluster marker that was clicked is still visible and if so, will 
-               &quot;zoom-in&quot; one level.
+               <input type="radio" id="rbtn1" name="fld_cluster_marker_click_checks" value="0"> 
+               <label for="rbtn1">Disable cluster marker click checks</label>
             </div>
          </form>
       </section>
-      <div class="map_viewport" id="mvp"></div>
+      <section>
+         <b>Perform tests to illustrate the behaviour of this setting</b>
+         <div class="opt_div">
+            In this example, when the cluster marker is clicked, the cluster markers click handler calls the Google maps
+            <a href="https://developers.google.com/maps/documentation/javascript/reference/map#Map.fitBounds" target="_blank">fitBounds()</a> 
+            method.  You may customize the action(s) taken when a cluster marker is clicked as needed (see: <a href="../reference.html#i5_grid_clusterer_options">Clusterer Reference - Options</a>)
+         </div>
+         <ol>
+            <li>
+               <p>
+                  Make sure the map zoom level is set to: <b>7</b>, then click the cluster marker
+               </p>
+               <ul>
+                  <li>
+                     <p>
+                        If cluster marker click checks are disabled, the map will NOT &quot;zoom-in&quot;,
+                        because the bounds of the data points already fit in the map (the individual data
+                        points will be displayed to illustrate).
+                     </p>
+                  </li>
+                  <li>
+                     <p>
+                        If cluster marker click checks are enabled, the clusterer will check if the tile
+                        containing the cluster marker that was clicked is still present, and if so, will
+                        automatically &quot;zoom-in&quot; one level.
+                     </p>
+                  </li>
+               </ul>
+            </li>
+            <li>
+               <p>Change the map to zoom level to: <b>5</b> (or any level less than 7), then click the cluster marker</p>
+               <ul>
+                  <li>
+                     <p>
+                        If cluster marker click checks are disabled, the map will &quot;zoom-in&quot;
+                        so the data points fit in the map; the map zoom level will change from 5 to 7
+                        as a direct result of calling the Google maps .fitBounds() method.  Clicking
+                        on the cluster marker again (at zoom level 7) will have no effect, as explained
+                        in the previous test above.
+                     </p>
+                  </li>
+                  <li>
+                     <p>
+                        If cluster marker click checks are enabled, the map will &quot;zoom-in&quot;
+                        so the data points fit in the map; the map zoom level changes from 5 to 7 as
+                        a direct result of calling the Google maps .fitBounds() method.  Clicking on
+                        the cluster marker again (at zoom level 7) will cause the map to &quot;zoom-in&quot; 
+                        one level, as explained in the previous test above.
+                     </p>
+                  </li>
+               </ul>
+            </li>
+         </ol>
+      </section>
    </main>
    <script>
       function map_init() {
