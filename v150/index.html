@@ -1,1 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grid Clusterer</title>
+<link rel="preconnect" href="https://ajax.googleapis.com" />
+<link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans_old:400,500|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700&display=swap">
+<style>
+body, html {
+   background-color: #FFFFFF;
+   margin: 0;
+   padding: 0;
+   font-family: Roboto, Helvetica, sans-serif;
+}
 
+footer {
+   border-top: 1px solid #AAAAAA;
+   margin: 0 12px 6px 12px;
+   padding: 6px;
+   text-align: center;
+}
+
+header {
+   border-bottom: 1px solid #AAAAAA;
+   font-size: 16pt;
+   font-weight: bold;
+   margin: 6px 12px 0 12px;
+   padding: 6px;
+   text-align: center;
+}
+
+li {
+   padding: 4px 0;
+}
+
+main {
+  margin: 0;
+  padding: 6px 12px;
+}
+
+pre {
+   margin:0;
+   padding: 8px;
+   white-space: pre-wrap;
+   white-space: -moz-pre-wrap;
+   white-space: -o-pre-wrap;
+   word-wrap: break-word;
+}
+
+section {
+   margin: 6px 0;
+   padding: 12px;
+}
+
+.code_div {
+   background-color: #EEEEEE;
+   border: 1px solid #AAAAAA;
+   margin: 6px 0;
+   padding: 8px;
+   font-family: 'Courier New', Courier, monospace;
+   font-size: 12pt;
+}
+
+.img_div {
+   margin:6px;
+   padding:0;
+}
+</style>
+</head>
+<body>
+   <header>
+      Grid Clusterer
+      Version: 1.5.0
+   </header>
+   <main>
+      <section>
+         <h1>Overview</h1>
+         <p>
+            The grid clusterer uses the <a href="https://developers.google.com/maps/documentation/javascript/reference">Google maps API</a> 
+            to manage a large number of &quot;data points&quot;, and displays the data points in grid-like &quot;clusters&quot;.            
+         </p>
+         <p>
+            Use the following links to learn about the grid clusterer:
+         </p>
+         <ul>
+            <li><a href="./ex1/index.html">Creating data points vs creating Google map markers</a></li>
+            <li><a href="./ex0/index.html">Tiles and grid points</a></li>
+            <li><a href="./ex2/index.html">Clusterer configuration options and performance</a></li>
+            <li><a href="./ex3/index.html">Enabling and disabling cluster marker click checks</a></li>
+            <li><a href="reference.html">Clusterer Reference</a></li>
+         </ul>
+         <h2>Data Points</h2>
+         <p>
+            The grid clusterer accepts &quot;data point&quot; objects as input. A data point 
+            object has the following properties:
+         </p>
+         <div class="code_div">
+            <pre>
+{
+   key: number | string,   // The data point key (any unique number or string)
+   lat: number,            // The data point latitude
+   lon: number             // The data point longitude
+}
+            </pre>
+         </div>
+         <p>
+            An example of a data point with a numeric key is shown below:
+         </p>
+         <div class="code_div">
+            <pre>
+data_pt = { key: 7133, lat: 37.4220698, lon: -122.086278 };
+            </pre>
+         </div>
+         <p>
+            An example of a data point with a string key is shown below:
+         </p>
+         <div class="code_div">
+            <pre>
+data_pt = { key: "GoogleHQ", lat: 37.4220698, lon: -122.086278 };
+            </pre>
+         </div>
+         <p>
+            Using data points results in decreased memory usage as well as a performance increase 
+            as there is no need to create Google map markers. 
+            See <a href="./ex1/index.html">Creating data points vs creating Google map markers</a>
+         </p>
+         <h2>Grid Tiles and Cluster Markers</h2>
+         <p>
+            By default, Google maps consist of tiles that are 256 x 256 pixels in size.  
+            &quot;Grid tiles&quot; that are visible within the map bounds are &quot;indexed&quot; 
+            starting at index 0, which is always located in the top left corner of
+            the map viewport.  Index numbers increase as you move left to right in 
+            column, then row order (as shown below).
+         </p>
+         <p>
+            Data points are &quot;clustered&quot; into individual tiles.  When the 
+            number of data points in a tile exceed a configured minimum, a single 
+            &quot;cluster marker&quot; is displayed in the center of the tile.  In 
+            the following image, two cluster markers are present:
+         </p>
+         <ul>
+            <li>
+               The tile at index 4 has 144 data points associated with it, as shown in the cluster markers label.
+            </li>
+            <li>
+               The tile at index 5 has 146 data points associated with it, as shown in the cluster markers label.
+            </li>
+         </ul>
+         <div class="img_div">
+            <img src="tiles_0.jpg" width="566" height="400" alt="Grid tiles image" title="Grid tiles with cluster markers">
+         </div>
+         <h2>Grid Points and Grid Point Markers</h2>
+         <p>
+            Tiles contain a configurable number of &quot;grid point&quot; rows and columns.
+            When the number of data points in a tile is less than the minimum to show a 
+            cluster marker, the data points are organized into grid points.  The number of 
+            grid points within a tile depends on the tile size and the number of grid point 
+            rows and columns set when the clusterer is configured.  A &quot;grid point marker&quot; 
+            is displayed in the center of each grid point that contains one or more data points.
+      </p>
+         <p>
+            In the example below, the tile size is 256 x 256 pixels and the clusterer was
+            configured to use 2 grid point rows and columns, so each tile will contain 4 grid
+            points.
+         </p>
+         <p>
+            Grid points within a tile are indexed starting at index 0, which is 
+            always the grid point in the top left corner of a tile, moving left to 
+            right in column, then row order.
+         </p>
+         <ul>
+            <li>The grid point at index 0 has one data point associated with it, as shown in the grid point markers label.</li>
+            <li>The grid point at index 1 has three data points associated with it, as shown in the grid point markers label.</li>
+            <li>The grid point at index 2 has one data point associated with it, as shown in the grid point markers label.</li>
+            <li>The grid point at index 3 has two data points associated with it, as shown in the grid point markers label.</li>
+         </ul>
+         <div class="img_div">
+            <img src="grid_boxes_0.jpg" width="270" height="272" alt="Grid point image" title="Grid point with 2 rows and 2 columns">
+         </div>
+         <p>
+            The same tile, using a clusterer configured to use 4 grid point rows and columns 
+            has 16 grid points numbered 0 to 15, as shown below:
+         </p>
+         <div class="img_div">
+            <img src="grid_boxes_1.jpg" width="271" height="271" alt="Grid point image" title="Grid point with 4 rows and 4 columns">
+         </div>
+         <p>
+            * Note that grid point borders are <b>not</b> displayed by the clusterer, 
+            but were included in the images above for illustration purposes.
+         </p>
+         <p>
+            See the <a href="./ex0/index.html">example of tiles and grid points</a>.
+         </p>
+      </section>
+   </main>
+   <footer>
+      This page was last updated on: 17-Nov-2022
+   </footer>
+</body>
+</html>
