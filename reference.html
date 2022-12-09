@@ -214,6 +214,7 @@ section {
             <li><a href="#t5_grid_point_marker_click_handler">grid_point_marker_click_handler</a></li>
             <li><a href="#t6_grid_point_marker_create_handler">grid_point_marker_create_handler</a></li>
             <li><a href="#t7_grid_point_marker_update_handler">grid_point_marker_update_handler</a></li>
+            <li><a href="#t8_map_marker">map_marker</a></li>
          </ul>
       </section>
    
@@ -1725,7 +1726,7 @@ section {
 
    my_cluster_marker_update_handler( evt ) {
 
-      if ( evt.tile.marker ) {
+      if ( evt.tile.marker instanceof google.maps.Marker ) {
 
          // Update the markers label and title ...
 
@@ -2102,7 +2103,7 @@ section {
 
    my_grid_point_marker_update_handler( evt ) {
 
-      if ( evt.grid_point.marker ) {
+      if ( evt.grid_point.marker instanceof google.maps.Marker ) {
 
          // Update the markers label and title ...
 
@@ -2295,8 +2296,7 @@ section {
                </div>
                <div class="property_desc">
                   <p>
-                     A <a href="https://developers.google.com/maps/documentation/javascript/reference/marker?hl=en" target="_blank">google.maps.Marker</a> 
-                     object that is the grid point marker for this grid point.
+                     A <a href="#t8_map_marker">map_marker</a> object that is the grid point marker for this grid point.
                   </p>
                </div>
             </div>
@@ -2440,10 +2440,9 @@ section {
                </div>
                <div class="property_desc">
                   <p>
-                     A <a href="https://developers.google.com/maps/documentation/javascript/reference/marker?hl=en" target="_blank">google.maps.Marker</a> 
-                     object that is the cluster marker for this tile.  Will be null 
-                     if the number of data keys (points) associated with this tile 
-                     is less than the minimum number required to form a cluster.
+                     A <a href="#t8_map_marker">map_marker</a> object that is the cluster marker for this tile.  Will be null 
+                     if the number of data keys (points) associated with this tile is less than the minimum number required to 
+                     form a cluster.
                   </p>
                </div>
             </div>   
@@ -2561,7 +2560,7 @@ section {
             </div>
             <b>Returns</b>
             <div class="method_arg">
-               A <a href="https://developers.google.com/maps/documentation/javascript/reference/marker?hl=en" target="_blank">google.maps.Marker</a> object. 
+               A <a href="#t8_map_marker">map_marker</a> object. 
                The clusterer will add the returned marker to the newly created tile.
             </div>
             <b>Example</b>
@@ -2623,13 +2622,11 @@ section {
                <pre>
    my_cluster_marker_update_handler( evt ) {
       
-      // Use the number of data points (keys) for the title and label ...
-      
-      var data_count_str = evt.tile.data_keys.length.toString();
-      
       // Update the markers label and title ...
 
-      if ( evt.tile.marker ) {
+      if ( evt.tile.marker instanceof google.maps.Marker ) {
+
+         var data_count_str = evt.tile.data_keys.length.toString();
 
          evt.tile.marker.setLabel( data_count_str );
 
@@ -2695,7 +2692,7 @@ section {
             </div>
             <b>Returns</b>
             <div class="method_arg">
-               A <a href="https://developers.google.com/maps/documentation/javascript/reference/marker?hl=en" target="_blank">google.maps.Marker</a> object. 
+               A <a href="#t8_map_marker">map_marker</a> object. 
                The clusterer will add the returned marker to the newly created grid point.
             </div>
             <b>Example</b>
@@ -2757,13 +2754,11 @@ section {
                <pre>
    my_grid_point_marker_update_handler( evt ) {
       
-      // Use the number of data points (keys) for the title and label ...
-      
-      var data_count_str = evt.grid_point.data_keys.length.toString();
-      
       // Update the markers label and title ...
 
-      if ( evt.grid_point.marker ) {
+      if ( evt.grid_point.marker instanceof google.maps.Marker ) {
+
+         var data_count_str = evt.grid_point.data_keys.length.toString();
 
          evt.grid_point.marker.setLabel( data_count_str );
 
@@ -2776,9 +2771,27 @@ section {
             </div>
          </div>
       </section>
+
+      <section>
+         <a id="t8_map_marker"></a>
+         <h2>Type: map_marker</h2>
+         <div class="type">
+            <div class="type_desc">
+               <p>
+                  One of the following:
+                  <ul>
+                     <li>A <a href="https://developers.google.com/maps/documentation/javascript/reference#marker" target="_blank">google.maps.Marker</a> object</li>
+                     <li>A <a href="https://developers.google.com/maps/documentation/javascript/reference#advanced-markers" target="_blank">google.maps.marker.AdvancedMarkerView</a> object</li>
+                     <li>null</li>
+                  </ul>
+               </p>
+            </div>
+         </div>
+      </section>
+
    </main>
    <footer>
-      This page was last updated on: 17-Nov-2022
+      This page was last updated on: 9-Dec-2022
    </footer>
 </body>
 </html>
