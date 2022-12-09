@@ -26,6 +26,7 @@
       <li>./dist/ex1/index.html</li>
       <li>./dist/ex2/index.html</li>
       <li>./dist/ex3/index.html</li>
+      <li>./dist/ex4/index.html</li>
     </ul>
   </li>
   <li>Using any web browser, open the &quot;/dist/index.html&quot; file.
