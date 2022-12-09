@@ -7,14 +7,14 @@
   Use the following links to learn about the grid clusterer:
 </p>
 <ul>
-  <li><a href="https://bdcoder2.github.io/grid_clusterer/ex1/index.html">Creating data points vs creating Google map markers</a></li>
-  <li><a href="https://bdcoder2.github.io/grid_clusterer/ex0/index.html">Tiles and grid points</a></li>
-  <li><a href="https://bdcoder2.github.io/grid_clusterer/ex2/index.html">Clusterer configuration options and performance</a></li>
-  <li><a href="https://bdcoder2.github.io/grid_clusterer/ex3/index.html">Enabling and disabling cluster marker click checks</a></li>
-  <li><a href="https://bdcoder2.github.io/grid_clusterer/reference.html">Clusterer Reference</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/v150/ex1/index.html">Creating data points vs creating Google map markers</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/v150/ex0/index.html">Tiles and grid points</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/v150/ex2/index.html">Clusterer configuration options and performance</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/v150/ex3/index.html">Enabling and disabling cluster marker click checks</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/v150/reference.html">Clusterer Reference</a></li>
 </ul>
 <p>
-  <a href="https://bdcoder2.github.io/grid_clusterer/index.html"><img src="snapshot.jpg" height=530 width=703 title="Grid Clusterer"></a>
+  <a href="https://bdcoder2.github.io/grid_clusterer/v150/index.html"><img src="snapshot.jpg" height=530 width=703 title="Grid Clusterer"></a>
 </p>
 <h2>To download and use locally:</h1>
 <ol>
