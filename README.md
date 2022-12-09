@@ -1,4 +1,4 @@
-# grid_clusterer v1.5.0
+# grid_clusterer v1.6.0
 <h2>A grid clusterer for Google maps</h2>
 <p>
   Use the following links to learn about the grid clusterer:
