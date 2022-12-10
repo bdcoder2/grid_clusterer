@@ -1,4 +1,4 @@
-// Source: D:\vscode\grid_clusterer\js\ex0\tester.js
+// Source: D:\vscode\grid_clusterer\v160\js\ex0\tester.js
 class tester {
     /*
     ---------------------------------------------------------------------
