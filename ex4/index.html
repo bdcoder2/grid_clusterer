@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Clusterer - Configuration options and performance (Using Advanced Markers)</title>
+<title>Grid Clusterer v1.6.0 - Configuration options and performance (Using Advanced Markers)</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" />
 <link rel="preconnect" href="https://ajax.googleapis.com" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -118,7 +118,7 @@ ul {
 </head>
 <body>
    <header>
-      <a href="../index.html"><b>Grid Clusterer</b></a> - Using Advanced Markers
+      <a href="../index.html"><b>Grid Clusterer v1.6.0</b></a> - Using Advanced Markers
    </header>
    <main>
       <div class="flex_div">
@@ -264,7 +264,18 @@ ul {
                <b>Notes:</b>
                <ul>
                   <li>This example allows you to set various options used by the clusterer.</li>
-                  <li>The internal default cluster marker click handler is used.</li>
+                  <li>
+                     Google maps <a href="https://developers.google.com/maps/documentation/javascript/reference/advanced-markers" target="_blank">advanced markers</a> 
+                     may be created by setting the handlers used by the clusterer to create and update cluster and grid point markers. 
+                     Refer to the following properties found in the <a href="../reference.html#i5_grid_clusterer_options">grid_clusterer_options</a>
+                     interface:
+                     <ul>
+                        <li>cluster_marker_create_handler</li>
+                        <li>cluster_marker_update_handler</li>
+                        <li>grid_point_marker_create_handler</li>
+                        <li>grid_point_marker_update_handler</li>
+                     </ul>
+                  </li>
                   <li>An info window will be displayed when a grid point marker is clicked.</li>
                </ul>
             </section>
