@@ -7,7 +7,7 @@ This release includes support for <a href="https://developers.google.com/maps/do
   Use the following links to learn about the grid clusterer:
 </p>
 <ul>
-  <li><a href="https://bdcoder2.github.io/grid_clusterer/v160//ex1/index.html">Creating data points vs creating Google map markers</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/v160/ex1/index.html">Creating data points vs creating Google map markers</a></li>
   <li><a href="https://bdcoder2.github.io/grid_clusterer/v160/ex0/index.html">Tiles and grid points</a></li>
   <li><a href="https://bdcoder2.github.io/grid_clusterer/v160/ex2/index.html">Clusterer configuration options and performance (using &quot;Classic&quot; markers)</a></li>
   <li><a href="https://bdcoder2.github.io/grid_clusterer/v160/ex3/index.html">Enabling and disabling cluster marker click checks</a></li>
