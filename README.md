@@ -7,15 +7,15 @@ This release includes support for <a href="https://developers.google.com/maps/do
   Use the following links to learn about the grid clusterer:
 </p>
 <ul>
-  <li><a href="https://bdcoder2.github.io/grid_clusterer/ex1/index.html">Creating data points vs creating Google map markers</a></li>
-  <li><a href="https://bdcoder2.github.io/grid_clusterer/ex0/index.html">Tiles and grid points</a></li>
-  <li><a href="https://bdcoder2.github.io/grid_clusterer/ex2/index.html">Clusterer configuration options and performance (using &quot;Classic&quot; markers)</a></li>
-  <li><a href="https://bdcoder2.github.io/grid_clusterer/ex3/index.html">Enabling and disabling cluster marker click checks</a></li>
-  <li><a href="https://bdcoder2.github.io/grid_clusterer/ex4/index.html">Clusterer configuration options and performance (using &quot;Advanced&quot; markers)</a></li>
-  <li><a href="https://bdcoder2.github.io/grid_clusterer/reference.html">Clusterer Reference</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/v160//ex1/index.html">Creating data points vs creating Google map markers</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/v160/ex0/index.html">Tiles and grid points</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/v160/ex2/index.html">Clusterer configuration options and performance (using &quot;Classic&quot; markers)</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/v160/ex3/index.html">Enabling and disabling cluster marker click checks</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/v160/ex4/index.html">Clusterer configuration options and performance (using &quot;Advanced&quot; markers)</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/v160/reference.html">Clusterer Reference</a></li>
 </ul>
 <p>
-  <a href="https://bdcoder2.github.io/grid_clusterer/index.html"><img src="snapshot.jpg" height=530 width=703 title="Grid Clusterer"></a>
+  <a href="https://bdcoder2.github.io/grid_clusterer/v160/index.html"><img src="snapshot.jpg" height=530 width=703 title="Grid Clusterer"></a>
 </p>
 <h2>To download and use locally:</h1>
 <ol>
