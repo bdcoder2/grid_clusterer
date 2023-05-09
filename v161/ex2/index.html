@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grid Clusterer v1.6.1 - Configuration options and performance</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link rel="preconnect" href="https://ajax.googleapis.com" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Kalam:300,400%7CSource+Sans+Pro:300,400,600,700" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../js/grid_clusterer.min.js"></script>
+<script src="tester.js"></script>
+<style>
+body, html {
+   background-color: #FFFFFF;
+   margin: 0;
+   padding: 0;
+   font-family: Roboto, Helvetica, sans-serif;
+}
+
+form {
+   border: 1px solid #AAAAAA;
+   margin: 0 6px 0 0;
+   padding: 6px;
+}
+
+header {
+   border-bottom: 1px solid #AAAAAA;
+   font-size: 16pt;
+   font-weight: bold;
+   margin: 6px 12px 0 12px;
+   padding: 6px;
+   text-align: center;
+}
+
+li {
+   padding: 4px 0;
+}
+
+main {
+  margin: 0;
+  padding: 6px 12px;
+}
+
+section {
+   margin: 6px 0;
+   padding: 12px;
+}
+
+ul {
+   margin:0;
+}
+
+.map_viewport {
+    height: 640px;
+    width: 100%;
+    position: relative;
+    background: #EFEFEF;
+    display: block;
+    overflow: hidden;
+    border: 1px solid #AAAAAA;
+    margin: 0;
+    padding: 0;
+}
+
+.flex_div {
+   display: flex;
+}
+
+.flex_div_left {
+   flex: 0 0 240px;
+}
+.flex_div_right {
+   flex: 1;
+}
+
+.config_div {
+   margin: 0;
+   padding: 6px;
+}
+
+.opt_div {
+   margin:0;
+   padding:6px;
+   text-align:center;
+}
+
+.stats_div {
+   margin: 12px 0 0 0;
+   padding: 0;
+}
+</style>
+</head>
+<body>
+   <header>
+      <a href="../index.html"><b>Grid Clusterer v1.6.1</b></a> - Clusterer configuration options and performance
+   </header>
+   <main>
+      <div class="flex_div">
+         <div class="flex_div_left">
+            <form id="frm1" onsubmit="return tester_obj.test_submit( event );">             
+               <div class="config_div">
+                  <div class="opt_div">
+                     Enter the number of random data points to create within the map bounds:<br>
+                     <input type="text" size="7" id="fld_dpc" name="fld_dpc" value="1000"><br><br>
+                     <button id="btn1" type="submit">Create New Data Points</button> 
+                  </div>
+               </div>
+            </form>
+            <form id="frm2" onsubmit="tester_obj.config_update( event );"> 
+               <div class="config_div">
+                  <div class="opt_div">
+                     <b>Clusterer Options:</b>
+                  </div>
+                  <div class="opt_div">
+                     Tile height x width (pixels):<br>
+                     <input type="text" size="3" id="fld_tile_height" name="fld_tile_height" value="256"> x 
+                     <input type="text" size="3" id="fld_tile_width" name="fld_tile_width" value="256">
+                  </div>
+                  <div class="opt_div">
+                     Cluster marker click check:<br>
+                     <input type="checkbox" checked id="fld_cluster_marker_click_check" name="fld_cluster_marker_click_check" value="1">
+                  </div>
+                  <div class="opt_div">
+                     Cluster size minimum:<br>
+                     <input type="text" size="5" id="fld_cluster_size_min" name="fld_cluster_size_min" value="20">
+                  </div>
+                  <div class="opt_div">
+                     Cluster zoom maximum:<br>
+                     <select id="fld_cluster_zoom_max" name="fld_cluster_zoom_max">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14" selected>14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                     </select>
+                  </div>
+                  <div class="opt_div">
+                     Grid rows, columns:<br>
+                     <select id="fld_grid_rows" name="fld_grid_rows">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4" selected>4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                     </select> , 
+                     <select id="fld_grid_cols" name="fld_grid_cols">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4" selected>4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                     </select>
+                  </div>
+                  <div class="opt_div">
+                     Tile borders visible:<br>
+                     <input type="checkbox" checked id="fld_tile_borders_visible" name="fld_tile_borders_visible" value="1">
+                  </div>
+                  <div class="opt_div">
+                     Tile border color:<br>
+                     <select id="fld_tile_border_color" name="fld_tile_border_color">
+                        <option value="#008000" selected>#008000</option>
+                        <option value="black">black</option>
+                        <option value="blue">blue</option>
+                        <option value="green">green</option>
+                        <option value="red">red</option>
+                        <option value="yellow">yellow</option>
+                     </select>
+                  </div>
+                  <div class="opt_div">
+                     Tile border style:<br>
+                     <select id="fld_tile_border_style" name="fld_tile_border_style">
+                        <option value="solid">solid</option>
+                        <option value="dashed" selected>dashed</option>
+                        <option value="dotted">dotted</option>
+                        <option value="double">double</option>
+                        <option value="groove">groove</option>
+                        <option value="hidden">hidden</option>
+                        <option value="inset">inset</option>
+                        <option value="none">none</option>
+                        <option value="outset">outset</option>
+                        <option value="ridge">ridge</option>
+                     </select>
+                  </div>
+                  <div class="opt_div">
+                     Tile border width:<br>
+                     <select id="fld_tile_border_width" name="fld_tile_border_width">
+                        <option value="1px" selected>1px</option>
+                        <option value="2px">2px</option>
+                        <option value="3px">3px</option>
+                        <option value="thin">thin</option>
+                        <option value="medium">medium</option>
+                        <option value="thick">thick</option>
+                     </select>
+                  </div>
+                  <div class="opt_div">
+                     <button id="btn2" type="submit">Update Clusterer Options</button>
+                  </div>
+               </div>
+            </form>
+         </div>
+         <div class="flex_div_right">
+            <div class="map_viewport" id="mvp"></div>
+            <section>
+               Map Zoom Level: <span id="mzl" style="margin: 0 20px 0 0;"></span> Time to redraw tiles: <span id="ts5"></span>
+               <div class="stats_div">
+                  <b>Initialization Statistics:</b>
+                  <ul>
+                     <li>Data points created: <span id="ts0"></span></li>
+                     <li>Time to create data points: <span id="ts1"></span></li>
+                     <li>Time to create cluster object AND load data: <span id="ts2"></span></li>
+                  </ul>
+               </div>
+            </section>
+            <section>
+               <b>Notes:</b>
+               <ul>
+                  <li>This example allows you to set various options used by the clusterer.</li>
+                  <li>The internal default cluster marker click handler is used.</li>
+                  <li>No handler is set for grid point marker clicks.</li>
+               </ul>
+            </section>
+         </div>
+      </div>
+   </main>
+   <script>
+      function map_init() {
+         tester_obj = new tester( 'mvp', 37.4220698, -122.0862784 );
+      }
+   </script>
+   <!-- Async script executes immediately and must be AFTER any DOM elements used in callback. -->
+   <script async src="https://maps.googleapis.com/maps/api/js?callback=map_init&key=AIzaSyA1RpoB4WdH8GQ6odWnELHcnDg6tQi8KWE"></script>
+</body>
+</html>
