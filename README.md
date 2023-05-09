@@ -1,6 +1,6 @@
 # grid_clusterer v1.6.1
 <p>
-This release includes support for <a href="https://developers.google.com/maps/documentation/javascript/reference/advanced-markers">Google maps &quot;Advanced&quot; markers (migrates AdvancedMarkerView to AdvancedMarkerElement).
+This release includes support for <a href="https://developers.google.com/maps/documentation/javascript/reference/advanced-markers">Google maps &quot;Advanced&quot; markers</a> (migrates AdvancedMarkerView to AdvancedMarkerElement).
 </p>
 <h2>A grid clusterer for Google maps</h2>
 <p>
