@@ -1,0 +1,2797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grid Clusterer v1.6.0 - Reference</title>
+<link rel="preconnect" href="https://ajax.googleapis.com" />
+<link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans_old:400,500|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700&display=swap">
+<style>
+body, html {
+   background-color: #FFFFFF;
+   margin: 0;
+   padding: 0;
+   font-family: Roboto, Helvetica, sans-serif;
+}
+
+footer {
+   border-top: 1px solid #AAAAAA;
+   margin: 0 12px 6px 12px;
+   padding: 6px;
+   text-align: center;
+}
+
+header {
+   border-bottom: 1px solid #AAAAAA;
+   font-size: 16pt;
+   font-weight: bold;
+   margin: 6px 12px 0 12px;
+   padding: 6px;
+   text-align: center;
+}
+
+li {
+   padding: 4px 0;
+}
+
+main {
+  margin: 0;
+  padding: 6px 12px;
+}
+
+pre {
+   margin:0;
+   padding: 8px;
+   white-space: pre-wrap;
+   white-space: -moz-pre-wrap;
+   white-space: -o-pre-wrap;
+   word-wrap: break-word;
+}
+
+section {
+   margin: 6px 0;
+   padding: 12px;
+}
+
+.code_div {
+   background-color: #F1F3F4;
+   border: 1px solid #AAAAAA;
+   margin: 6px 0;
+   padding: 8px;
+   font-family: 'Courier New', Courier, monospace;
+   font-size: 12pt;
+}
+
+.interface {
+   margin: 6px 0 32px 12px;
+   padding: 6px 0 0 0;
+}
+
+.method {
+   border-top: 1px solid #AAAAAA;
+   margin: 6px 0 32px 12px;
+   padding: 6px 0 0 0;
+}
+
+.method_arg {
+   margin: 12px 0 20px 24px;
+   padding: 0 6px;
+}
+
+.method_arg_desc {
+   margin: 6px 0 0 24px;
+   padding: 6px 0;
+}
+
+.method_arg_name {
+   margin: 0 0 6px 0;
+   padding: 0;
+}
+
+.method_desc {
+   margin: 0 0 20px 24px;
+   padding: 0;
+}
+
+.method_name {
+   font-weight: bold;
+   margin: 0 0 6px 0;
+   padding: 6px 0 8px 0;
+}
+
+.property {
+   border-top: 1px solid #AAAAAA;
+   margin: 6px 0 32px 12px;
+   padding: 6px 0 0 0;
+}
+
+.property_name {
+   font-weight: bold;
+   margin: 0 0 6px 0;
+   padding: 6px 0 8px 0;
+}
+
+.property_desc {
+   margin: 0 0 20px 24px;
+   padding: 0;
+}
+
+.type {
+   margin: 0px 0 32px 12px;
+   padding: 0;
+}
+
+.type_desc {
+   margin: 0 0 20px 24px;
+   padding: 0;
+}
+</style>
+</head>
+<body>
+   <header>
+      <a href="index.html">Grid Clusterer v1.6.0</a> - Reference
+   </header>
+   <main>
+      <section>
+         <h1>Classes</h1>
+         <ul>
+            <li><a href="#c1_class_grid_clusterer">grid_clusterer</a>
+            <ul>
+               <li>
+                  <a href="#c1_constructor">Constructor</a>
+               </li>
+               <li>
+                  <a href="#c1_public_methods">Public Methods</a>
+                  <ul>
+                     <li><a href="#c1_pubmeth_auto_redraw_event_add">auto_redraw_event_add</a></li>
+                     <li><a href="#c1_pubmeth_auto_redraw_event_remove">auto_redraw_event_remove</a></li>
+                     <li><a href="#c1_pubmeth_auto_redraw_events">auto_redraw_events</a></li>
+                     <li><a href="#c1_pubmeth_auto_redraw_events_clear">auto_redraw_events_clear</a></li>
+                     <li><a href="#c1_pubmeth_clear">clear</a></li>
+                     <li><a href="#c1_pubmeth_cluster_marker_click_handler_use_default">cluster_marker_click_handler_use_default</a></li>
+                     <li><a href="#c1_pubmeth_cluster_marker_create_use_default">cluster_marker_create_use_default</a></li>
+                     <li><a href="#c1_pubmeth_cluster_marker_update_use_default">cluster_marker_update_use_default</a></li>
+                     <li><a href="#c1_pubmeth_configure">configure</a></li>
+                     <li><a href="#c1_pubmeth_data_point_delete">data_point_delete</a></li>
+                     <li><a href="#c1_pubmeth_data_point_exists">data_point_exists</a></li>
+                     <li><a href="#c1_pubmeth_data_point_latlon">data_point_latlon</a></li>
+                     <li><a href="#c1_pubmeth_data_point_upsert">data_point_upsert</a></li>
+                     <li><a href="#c1_pubmeth_data_points_clear">data_points_clear</a></li>
+                     <li><a href="#c1_pubmeth_data_points_upsert">data_points_upsert</a></li>
+                     <li><a href="#c1_pubmeth_grid_point">grid_point</a></li>
+                     <li><a href="#c1_pubmeth_grid_point_bounds">grid_point_bounds</a></li>
+                     <li><a href="#c1_pubmeth_grid_point_marker_create_use_default">grid_point_marker_create_use_default</a></li>
+                     <li><a href="#c1_pubmeth_grid_point_marker_update_use_default">grid_point_marker_update_use_default</a></li>
+                     <li><a href="#c1_pubmeth_latlon_to_tile_index">latlon_to_tile_index</a></li>
+                     <li><a href="#c1_pubmeth_redraw">redraw</a></li>
+                     <li><a href="#c1_pubmeth_tile">tile</a></li>
+                     <li><a href="#c1_pubmeth_tile_bounds">tile_bounds</a></li>
+                     <li><a href="#c1_pubmeth_tiles_clear">tiles_clear</a></li>
+                  </ul>
+               </li>
+               <li>
+                  <a href="#c1_public_properties">Public Properties</a>
+                  <ul>
+                     <li><a href="#c1_pubprop_auto_redraw_events_count">auto_redraw_events_count</a></li>
+                     <li><a href="#c1_pubprop_data_points_count">data_points_count</a></li>
+                     <li><a href="#c1_pubprop_tile_borders_visible">tile_borders_visible</a></li>
+                     <li><a href="#c1_pubprop_tile_count">tile_count</a></li>
+                     <li><a href="#c1_pubprop_tile_grid_point_cols">tile_grid_point_cols</a></li>
+                     <li><a href="#c1_pubprop_tile_grid_point_index_max">tile_grid_point_index_max</a></li>
+                     <li><a href="#c1_pubprop_tile_grid_point_rows">tile_grid_point_rows</a></li>
+                     <li><a href="#c1_pubprop_tile_height">tile_height</a></li>
+                     <li><a href="#c1_pubprop_tile_index_max">tile_index_max</a></li>
+                     <li><a href="#c1_pubprop_tile_width">tile_width</a></li>
+                  </ul>
+               </li>
+            </ul>
+         </li>
+         </ul>
+   
+         <h1>Interfaces</h1>
+         <ul>
+            <li><a href="#i1_cluster_marker_click_event">cluster_marker_click_event</a></li>
+            <li><a href="#i2_cluster_marker_create_event">cluster_marker_create_event</a></li>
+            <li><a href="#i3_cluster_marker_update_event">cluster_marker_update_event</a></li>
+            <li><a href="#i4_data_point">data_point</a></li>
+            <li><a href="#i5_grid_clusterer_options">grid_clusterer_options</a></li>
+            <li><a href="#i6_grid_point">grid_point</a></li>
+            <li><a href="#i7_grid_point_marker_click_event">grid_point_marker_click_event</a></li>
+            <li><a href="#i8_grid_point_marker_create_event">grid_point_marker_create_event</a></li>
+            <li><a href="#i9_grid_point_marker_update_event">grid_point_marker_update_event</a></li>
+            <li><a href="#i10_grid_tile">grid_tile</a></li>
+         </ul>
+   
+         <h1>Types</h1>
+         <ul>
+            <li><a href="#t1_data_point_key">data_point_key</a></li>
+            <li><a href="#t2_cluster_marker_click_handler">cluster_marker_click_handler</a></li>
+            <li><a href="#t3_cluster_marker_create_handler">cluster_marker_create_handler</a></li>
+            <li><a href="#t4_cluster_marker_update_handler">cluster_marker_update_handler</a></li>
+            <li><a href="#t5_grid_point_marker_click_handler">grid_point_marker_click_handler</a></li>
+            <li><a href="#t6_grid_point_marker_create_handler">grid_point_marker_create_handler</a></li>
+            <li><a href="#t7_grid_point_marker_update_handler">grid_point_marker_update_handler</a></li>
+            <li><a href="#t8_map_marker">map_marker</a></li>
+         </ul>
+      </section>
+   
+      <section>
+         <a id="c1_class_grid_clusterer"></a>
+         <h2>Class: grid_clusterer</h2>
+         <p>
+            The grid clusterer may be used to manage a large number of <a href="#i4_data_point">data_points</a> on a Google map.
+         </p>
+         <a id="c1_constructor"></a>
+         <h3>Constructor</h3>
+         <div class="method">
+            <div class="method_name">
+               grid_clusterer( map: <a href="https://developers.google.com/maps/documentation/javascript/reference/map#Map.constructor" target="_blank">google.maps.Map</a>, data_points: Array&lt; <a href="#i4_data_point">data_point</a> &gt; = [ ], opts?: <a href="#i5_grid_clusterer_options">grid_clusterer_options</a> )
+            </div>
+            <div class="method_desc">
+               <p>
+                  Creates a grid clusterer object that is associated with the given map.
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  map
+                  <div class="method_arg_desc">
+                     Required. A <a href="https://developers.google.com/maps/documentation/javascript/reference/map#Map.constructor" target="_blank">google.maps.Map</a> object.
+                  </div>
+               </div>
+               <div class="method_arg">
+                  data_points
+                  <div class="method_arg_desc">
+                     Optional.  An array of <a href="#i4_data_point">data_point</a> objects.  The data points are managed by the 
+                     grid clusterer and are used to display cluster and grid point markers.
+                  </div>
+               </div>
+               <div class="method_arg">
+                  opts
+                  <div class="method_arg_desc">
+                     Optional. A <a href="#i5_grid_clusterer_options">grid_clusterer_options</a> object used to set 
+                     the various configuration options used by the grid clusterer.
+                  </div>
+               </div>
+               <b>Example</b>
+               <p>
+                  The following is a complete example showing how to instantiate the grid clusterer with a small 
+                  number of random data points.
+               </p>
+               <p><b>IMPORTANT:</b>
+                  <ul>
+                     <li>
+                        The &quot;grid_clusterer.min.js&quot; file is located in the grid_clusterer.zip archive, path: &quot;/dist/js/&quot;
+                     </li>
+                     <li>
+                        Replace &quot;[YOUR_API_KEY]&quot; with 
+                        <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">your Google maps API key</a>.
+                     </li>
+                  </ul>
+               <div class="code_div">
+                  <pre> 
+   &lt;html lang=&quot;en&quot;&gt;
+   &lt;head&gt;
+   &lt;meta charset=&quot;utf-8&quot;&gt;
+   &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+   &lt;title&gt;Grid Clusterer - Example&lt;/title&gt;
+   &lt;script src=&quot;grid_clusterer.min.js&quot;&gt;&lt;/script&gt;
+   &lt;style&gt;
+   body, html {
+      background-color: #FFFFFF;
+      margin: 0;
+      padding: 8px;
+   }
+   
+   .map_viewport {
+      border: 1px solid #AAAAAA;
+      height: 560px;
+      width: 100%;
+      position: relative;
+      background: #EFEFEF;
+      display: block;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+   }
+   &lt;/style&gt;
+   &lt;/head&gt;
+   &lt;body&gt;
+   &lt;div id=&quot;mvp&quot; class=&quot;map_viewport&quot;&gt;&lt;/div&gt;
+   &lt;script&gt;
+      // Create random data points ...
+
+      function data_points_create( data_points_count ) {
+
+         const k_lat_min = 37.2428323;
+         const k_lon_min = -122.118501;
+         const k_lat_max = 37.417548;
+         const k_lon_max = -121.731920;
+            
+         var i;
+         var lat;
+         var lat_span;
+         var lon;
+         var lon_span;
+
+         var data_points = new Array( data_points_count );
+
+         lat_span = k_lat_max - k_lat_min;
+         lon_span = k_lon_max - k_lon_min;
+      
+         for ( i = 0; i &lt; data_points_count; i++ ) {
+
+            lat = k_lat_min + ( Math.random() * lat_span );
+
+            lon = k_lon_min + ( Math.random() * lon_span );
+
+            data_points[ i ] = { key: i, lat: lat, lon: lon };
+
+         }
+
+         return data_points;
+
+      }
+
+
+      // Initialize Google maps and clusterer ...
+
+      function map_init() {
+
+         var map;
+
+         var map_center = new google.maps.LatLng( 37.296382, -121.901865 );
+
+         var map_opts = {
+            center: map_center,
+            clickableIcons: false,
+            gestureHandling: 'greedy',
+            mapTypeControl: false,
+            panControl: false,
+            zoom: 11
+         };
+
+         try {
+
+            map = new google.maps.Map( document.getElementById( 'mvp' ), map_opts );
+
+         }
+         catch ( ex ) {
+
+            alert( '* Unable to create map: ' + ex.toString() );
+
+            map = null;
+
+         }
+
+         // If unable to create map object, we are doomed, exit ...
+
+         if ( !map ) {
+         
+            return;
+         
+         }
+         
+
+         // Create some data points ...
+      
+         var data_points = data_points_create( 200 );
+
+
+         // Set clusterer options and create clusterer ...
+         
+         var clusterer_opts = {
+               cluster_size_min: 10
+            };
+
+         var clusterer = new grid_clusterer( map, data_points, clusterer_opts );
+
+
+         // Set the clusterer to auto redraw on these map events ...
+
+         clusterer.auto_redraw_event_add( 'dragend' );
+
+         clusterer.auto_redraw_event_add( 'zoom_changed' );
+
+
+         // Redraw after all map tiles are loaded ...
+
+         google.maps.event.addListenerOnce( map, 'tilesloaded', () => { clusterer.redraw(); } );
+
+      }
+   &lt;/script&gt;
+   &lt;script async src=&quot;https://maps.googleapis.com/maps/api/js?callback=map_init&amp;key=[YOUR_API_KEY]&quot;&gt;&lt;/script&gt;
+   &lt;/body&gt;
+   &lt;/html&gt;
+                  </pre>
+               </div>
+            </div>
+         </div>
+         <a id="c1_public_methods"></a>
+         <h3>Public Methods</h3>
+         <a id="c1_pubmeth_auto_redraw_event_add"></a>
+         <div class="method">
+            <div class="method_name">
+               auto_redraw_event_add( event_name: string )
+            </div>
+            <div class="method_desc">
+               <p>
+                  Adds a listener for the given event name that will trigger an auto-redraw.
+               </p>
+               <p>
+                  By default the clusterer does not auto-redraw tiles unless at least one event name is registered. 
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  event_name
+                  <div class="method_arg_desc">
+                     A string containing the event name to listen for and redraw tiles when that event is triggered.
+                     Typically, you would register one or more of the <a href="https://developers.google.com/maps/documentation/javascript/reference/map#Map-Events" target="_blank">Google map event names</a>.
+                  </div>
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  None
+               </div>
+               <b>Example</b>
+               <p>
+                  Enable auto-redraw on map &quot;bounds_changed&quot; and &quot;dragend&quot; events.
+               </p>
+               <div class="code_div">
+                  <pre>
+   clusterer.auto_redraw_event_add( 'bounds_changed' );
+   clusterer.auto_redraw_event_add( 'dragend' );
+                  </pre>
+               </div>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_auto_redraw_event_remove"></a>
+         <div class="method">
+            <div class="method_name">
+               auto_redraw_event_remove( event_name: string ): boolean
+            </div>
+            <div class="method_desc">
+               <p>
+                  Removes the given event name that triggers an auto-redraw.
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  <div class="method_arg_name">
+                     event_name
+                  </div>
+                  <div class="method_arg_desc">
+                     The event name to be removed.
+                  </div>
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  <ul>
+                     <li>
+                        True if the event name was found and the associated listener was removed.
+                     </li>
+                     <li>
+                        False if the event name was not found.
+                     </li>
+                  </ul>
+               </div>
+               <b>Example</b>
+               <p>
+                  To disable auto-redraw on a map &quot;dragend&quot; event (if previously registered):
+               </p>
+               <div class="code_div">
+                  <pre>
+   clusterer.auto_redraw_event_remove( 'dragend' );
+                  </pre>
+               </div>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_auto_redraw_events"></a>
+         <div class="method">
+            <div class="method_name">
+               auto_redraw_events(): Array&lt; string &gt;
+            </div>
+            <div class="method_desc">
+               <p>
+                  Returns the event names registered to perform an auto-redraw.
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  None
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  A string array of map event names that cause the clusterer to auto-redraw tiles.
+               </div>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_auto_redraw_events_clear"></a>
+         <div class="method">
+            <div class="method_name">
+               auto_redraw_events_clear(): void
+            </div>
+            <div class="method_desc">
+               <p>
+                  Clear (remove) all event names registered to preform an auto-redraw.
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  None
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  None
+               </div>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_clear"></a>
+         <div class="method">
+            <div class="method_name">
+               clear(): void
+            </div>
+            <div class="method_desc">
+               <p>
+                  Clears the clusterer by doing the following:
+               </p>
+               <ul>
+                  <li>Removes tile borders (if present).</li>
+                  <li>Removes all auto-redraw event listeners.</li>
+                  <li>Removes all tiles (cluster and grid point markers).</li>
+                  <li>Removes all data points.</li>
+               </ul>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  None
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  None
+               </div>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_cluster_marker_click_handler_use_default"></a>
+         <div class="method">
+            <div class="method_name">
+               cluster_marker_click_handler_use_default(): void
+            </div>
+            <div class="method_desc">
+               <p>
+                  Use the internal default handler to handle cluster marker click events.
+               </p>
+               <p>
+                  By default, when the clusterer is instantiated, it will use the internal
+                  default cluster marker click handler.  The default handler will call the 
+                  Google maps .fitBounds() method using the latitude / longitude bounds of
+                  the data points associated with the grid tile.
+               </p>
+               <p>
+                  You may change the default cluster marker click handler by setting the 
+                  <a href="#i5_prop_cluster_marker_click_handler">cluster_marker_click_handler</a> 
+                  property of a <a href="#i5_grid_clusterer_options">grid_clusterer_options</a> 
+                  object and then call the <a href="#c1_pubmeth_configure">configure</a> method.
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  None
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  None
+               </div>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_cluster_marker_create_use_default"></a>
+         <div class="method">
+            <div class="method_name">
+               cluster_marker_create_use_default(): void
+            </div>
+            <div class="method_desc">
+               <p>
+                  Use the clusterers internal default handler to create cluster markers.
+               </p>
+               <p>
+                  By default, when a cluster marker needs to be created, it will use the 
+                  internal default handler to create a cluster marker.  The cluster marker will
+                  be positioned in the center of the grid tile, and the markers label will 
+                  be the number of data points associated with the grid tile.
+               </p>
+               <p>
+                  You may change the default cluster icon used by setting the 
+                  <a href="#i5_prop_cluster_marker_create_handler">cluster_marker_create_handler</a> 
+                  property of a <a href="#i5_grid_clusterer_options">grid_clusterer_options</a> 
+                  object and then call the <a href="#c1_pubmeth_configure">configure</a> method.
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  None
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  None
+               </div>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_cluster_marker_update_use_default"></a>
+         <div class="method">
+            <div class="method_name">
+               cluster_marker_update_use_default(): void
+            </div>
+            <div class="method_desc">
+               <p>
+                  Use the clusterers internal default handler to update cluster markers.
+               </p>
+               <p>
+                  By default, cluster marker labels will be updated to show the number of data 
+                  points associated with a grid tile when grid tiles are redrawn.
+               </p>
+               <p>
+                  You may change the default cluster marker update handler used by setting the 
+                  <a href="#i5_prop_cluster_marker_update_handler">cluster_marker_update_handler</a> 
+                  property of a <a href="#i5_grid_clusterer_options">grid_clusterer_options</a> 
+                  object and then call the <a href="#c1_pubmeth_configure">configure</a> method.
+               </p>
+               <p>
+                  If your application does not require cluster marker updates, simply set the 
+                  <a href="#i5_prop_cluster_marker_update_handler">cluster_marker_update_handler</a> 
+                  property of the <a href="#i5_grid_clusterer_options">grid_clusterer_options</a> 
+                  object to null and then call the <a href="#c1_pubmeth_configure">configure</a> method.
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  None
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  None
+               </div>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_configure"></a>
+         <div class="method">
+            <div class="method_name">
+               configure( opts?: <a href="#i5_grid_clusterer_options">grid_clusterer_options</a> ): void
+            </div>
+            <div class="method_desc">
+               <p>
+                  Validate and set configuration options used by the clusterer.
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  opts
+                  <div class="method_arg_desc">
+                     An optional <a href="#i5_grid_clusterer_options">grid_clusterer_options</a> 
+                     object that contains the configuration options to set.  If this parameter 
+                     is omitted, the clusterer will be re-configured to use default values 
+                     for all configuration options.
+                  </div>
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  None.
+               </div>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_data_point_delete"></a>
+         <div class="method">
+            <div class="method_name">
+               data_point_delete( key: <a href="#t1_data_point_key">data_point_key</a> ): boolean
+            </div>
+            <div class="method_desc">
+               <p>
+                  Delete a data point.
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  <div class="method_arg_name">
+                     key
+                  </div>
+                  <div class="method_arg_desc">
+                     The <a href="#t1_data_point_key">data_point_key</a> of the <a href="#i4_data_point">data_point</a> to delete.
+                  </div>
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  <ul>
+                     <li>
+                        True if a data point was found and deleted for the given key.
+                     </li>
+                     <li>
+                        False if no data point was found for the given key.
+                     </li>
+                  </ul>
+               </div>
+               <b>Notes</b>
+               <ul>
+                  <li>
+                     This method DOES NOT update the map viewport. To do so, call the 
+                     <a href="#c1_pubmeth_redraw">redraw</a> method.
+                  </li>
+               </ul>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_data_point_exists"></a>
+         <div class="method">
+            <div class="method_name">
+               data_point_exists( key: <a href="#t1_data_point_key">data_point_key</a> ): boolean
+            </div>
+            <div class="method_desc">
+               <p>
+                  Checks if the given <a href="#i4_data_point">data_point</a> key exists.
+               <p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  <div class="method_arg_name">
+                     key
+                  </div>
+                  <div class="method_arg_desc">
+                     A <a href="#t1_data_point_key">data_point_key</a>
+                  </div>
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  <ul>
+                     <li>
+                        True if a data point exists for the given key.
+                     </li>
+                     <li>
+                        False if no data point exists for the given key.
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_data_point_latlon"></a>
+         <div class="method">
+            <div class="method_name">
+               data_point_latlon( key: <a href="#t1_data_point_key">data_point_key</a> ): <a href="https://developers.google.com/maps/documentation/javascript/reference/coordinates?hl=en#LatLng" target="_blank">google.maps.LatLng</a>
+            </div>
+            <div class="method_desc">
+               <p>
+                  Get the latitude / longitude for the given data point key.
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  <div class="method_arg_name">
+                     data_key
+                  </div>
+                  <div class="method_arg_desc">
+                     A <a href="#t1_data_point_key">data_point_key</a>.
+                  </div>
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  <ul>
+                     <li>
+                        A google.maps.LatLng object for the key supplied.
+                     </li>
+                     <li>
+                        Undefined if the key did not exist.
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_data_point_upsert"></a>
+         <div class="method">
+            <div class="method_name">
+               data_point_upsert( data_pt: <a href="#i4_data_point">data_point</a> ): boolean
+            </div>
+            <div class="method_desc">
+               <p>
+                  Update or insert the given data point object.
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  <div class="method_arg_name">
+                     data_pt
+                  </div>
+                  <div class="method_arg_desc">
+                     The <a href="#i4_data_point">data_point</a> to update or insert.  If the data point object 
+                     key exists, then the existing data point latitude and longitude values will be updated. 
+                     <p>
+                        If the data point object key does not exist, the data point object will be added
+                        to the clusterer.
+                     </p>
+                  </div>
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  <ul>
+                     <li>
+                        True if the data point was updated or inserted.
+                     </li>
+                     <li>
+                        False if the data point was not updated or inserted, or the latitude / longitude was not valid.
+                     </li>
+                  </ul>
+               </div>
+               <b>Notes</b>
+               <ul>
+                  <li>
+                     This method DOES NOT update the map viewport. To do so, call the 
+                     <a href="#c1_pubmeth_redraw">redraw</a> method.
+                  </li>
+               </ul>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_data_points_clear"></a>
+         <div class="method">
+            <div class="method_name">
+               data_points_clear(): void
+            </div>
+            <div class="method_desc">
+               <p>
+                  Delete (clear) all data points.
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  None
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  None
+               </div>
+               <b>Notes</b>
+               <ul>
+                  <li>
+                     This method DOES NOT update the map viewport. To do so, call the 
+                     <a href="#c1_pubmeth_redraw">redraw</a> method.
+                  </li>
+               </ul>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_data_points_upsert"></a>
+         <div class="method">
+            <div class="method_name">
+               data_points_upsert( data_points: Array&lt; <a href="#i4_data_point">data_point</a> &gt; ): void
+            </div>
+            <div class="method_desc">
+               <p>
+                  Given an array of data point objects, update or insert the data points..
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  <div class="method_arg_name">
+                     data_points
+                  </div>
+                  <div class="method_arg_desc">
+                     An array of <a href="#i4_data_point">data_point</a> objects to be updated or inserted.
+                  </div>
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  None
+               </div>
+               <b>Notes</b>
+               <ul>
+                  <li>
+                     This method DOES NOT update the map viewport. To do so, call the 
+                     <a href="#c1_pubmeth_redraw">redraw</a> method.
+                  </li>
+               </ul>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_grid_point"></a>
+         <div class="method">
+            <div class="method_name">
+               grid_point( tile_idx: number, grid_point_idx: number ): <a href="#i6_grid_point">grid_point</a>
+            </div>
+            <div class="method_desc">
+               <p>
+                  Get a grid_point object from within a given tile.
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  <div class="method_arg_name">
+                     tile_idx
+                  </div>
+                  <div class="method_arg_desc">
+                     The index of a <a href="#i10_grid_tile">grid_tile</a>.
+                  </div>
+               </div>
+               <div class="method_arg">
+                  <div class="method_arg_name">
+                     grid_point_idx
+                  </div>
+                  <div class="method_arg_desc">
+                     The index of a <a href="#i6_grid_point">grid_point</a> within the tile.
+                  </div>
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  <ul>
+                     <li>
+                        A grid_point object.
+                     </li>
+                     <li>
+                        Null if the tile index and/or grid point index was not valid.
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_grid_point_bounds"></a>
+         <div class="method">
+            <div class="method_name">
+               grid_point_bounds( tile_idx: null, grid_point_idx: number ): <a href="https://developers.google.com/maps/documentation/javascript/reference/coordinates?hl=en#LatLngBounds" target="_blank">google.maps.LatLngBounds</a>
+            </div>
+            <div class="method_desc">
+               <p>
+                  Get the latitude / longitude bounds of a grid point within a specific tile.
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  <div class="method_arg_name">
+                     tile_idx
+                  </div>
+                  <div class="method_arg_desc">
+                     The index of a <a href="#i10_grid_tile">grid_tile</a> within the map viewport.
+                  </div>
+               </div>
+               <div class="method_arg">
+                  <div class="method_arg_name">
+                     grid_point_idx
+                  </div>
+                  <div class="method_arg_desc">
+                     The index of a <a href="#i6_grid_point">grid_point</a> within the tile.
+                  </div>
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  <ul>
+                     <li>
+                        A google.maps.LatLngBounds object.
+                     </li>
+                     <li>
+                        Null if the tile index or grid point index was not valid.
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_grid_point_marker_create_use_default"></a>
+         <div class="method">
+            <div class="method_name">
+               grid_point_marker_create_use_default(): void
+            </div>
+            <div class="method_desc">
+               <p>
+                  Use the clusterers internal default handler to create grid point markers.
+               </p>
+               <p>
+                  You may change the handler used to create grid point markers by setting
+                  the <a href="#i5_prop_grid_point_marker_create_handler">grid_point_marker_create_handler</a> 
+                  property in a <a href="#i5_grid_clusterer_options">grid_cluster_options</a> object and then 
+                  call the <a href="#c1_pubmeth_configure">configure</a> method.
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  None
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  None
+               </div>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_grid_point_marker_update_use_default"></a>
+         <div class="method">
+            <div class="method_name">
+               grid_point_marker_update_use_default(): void
+            </div>
+            <div class="method_desc">
+               <p>
+                  Use the clusterers internal default handler to update grid point markers.
+               </p>
+               <p>
+                  You may change the handler used to update grid point markers by setting
+                  the <a href="#i5_prop_grid_point_marker_update_handler">grid_point_marker_update_handler</a> 
+                  property in a <a href="#i5_grid_clusterer_options">grid_cluster_options</a> object and then 
+                  call the <a href="#c1_pubmeth_configure">configure</a> method.
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  None
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  None
+               </div>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_latlon_to_tile_index"></a>
+         <div class="method">
+            <div class="method_name">
+               latlon_to_tile_index( latlon: <a href="https://developers.google.com/maps/documentation/javascript/reference/coordinates?hl=en#LatLng" target="_blank">google.maps.LatLng</a> ): number
+            </div>
+            <div class="method_desc">
+               <p>
+                  Get a grid tile index for a given a latitude / longitude.
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  <div class="method_arg_name">
+                     latlon
+                  </div>
+                  <div class="method_arg_desc">
+                     A <a href="https://developers.google.com/maps/documentation/javascript/reference/coordinates?hl=en#LatLng" target="_blank">google.maps.LatLng</a> 
+                     object.
+                     <p>
+                        The latlon must be within the current map bounds.
+                     </p>
+                  </div>
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  <ul>
+                     <li>
+                        A number that is the tile index (will be 0 or greater).
+                     </li>
+                     <li>
+                        -1 if unable to calculate the tile index (due to the map or map bounds not being set, or if the 
+                        latlon argument was not within the map bounds).
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_redraw"></a>
+         <div class="method">
+            <div class="method_name">
+               redraw(): void
+            </div>
+            <div class="method_desc">
+               <p>
+                  Redraws all the grid tiles within the map bounds.
+               </p> 
+               <b>Arguments</b>
+               <div class="method_arg">
+                  None
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  None
+               </div>
+               <b>Notes</b>
+               <ul>
+                  <li>
+                     Use the <a href="#c1_pubmeth_auto_redraw_event_add">auto_redraw_event_add</a> method to add event  
+                     names that will trigger an &quot;auto-redraw&quot;.
+                  </li>
+               </ul>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_tile"></a>
+         <div class="method">
+            <div class="method_name">
+               tile( tile_idx: number ): <a href="#i10_grid_tile">grid_tile</a>
+            </div>
+            <div class="method_desc">
+               <p>
+                  Given a tile index, return a grid_tile object with that index.
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  tile_idx
+                  <div class="method_arg_desc">
+                     The index of the <a href="#i10_grid_tile">grid_tile</a> object to return.
+                  </div>
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  <ul>
+                     <li>
+                        A grid_tile object if the tile index was valid.
+                     </li>
+                     <li>
+                        Null if no tile exists for the given tile index.
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_tile_bounds"></a>
+         <div class="method">
+            <div class="method_name">
+               tile_bounds( tile_idx: number ): <a href="https://developers.google.com/maps/documentation/javascript/reference/coordinates?hl=en#LatLngBounds" target="_blank">google.maps.LatLngBounds</a> 
+            </div>
+            <div class="method_desc">
+               <p>
+                  Get the latitude / longitude bounds of a tile within the map viewport. 
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  <div class="method_arg_name">
+                     tile_idx
+                  </div>
+                  <div class="method_arg_desc">
+                     The index of a tile within the map viewport.
+                  </div>
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  <ul>
+                     <li>
+                        A google.maps.LatLngBounds object if the tile index was valid.
+                     </li>
+                     <li>
+                        Null if the tile index was not valid.
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+   
+         <a id="c1_pubmeth_tiles_clear"></a>
+         <div class="method">
+            <div class="method_name">
+               tiles_clear(): void
+            </div>
+            <div class="method_desc">
+               <p>
+                  Clears (deletes) all tiles and any grid points associated with the tiles.
+               </p>
+               <b>Arguments</b>
+               <div class="method_arg">
+                  None
+               </div>
+               <b>Returns</b>
+               <div class="method_arg">
+                  None.
+               </div>
+            </div>
+         </div>
+   
+         <a id="c1_public_properties"></a>
+         <h3>Public Properties</h3>
+
+         <a id="c1_pubprop_auto_redraw_events_count"></a>
+         <div class="property">
+            <div class="property_name">
+               auto_redraw_events_count: number
+            </div>
+            <div class="property_desc">
+               Read Only.  Returns the number of event names registered that will cause the clusterer to auto-redraw.
+            </div> 
+         </div>
+   
+         <a id="c1_pubprop_data_points_count"></a>
+         <div class="property">
+            <div class="property_name">
+               data_points_count: number
+            </div>
+            <div class="property_desc">
+               Read Only.  Returns the number of <a href="#i4_data_point">data_points</a> the clusterer is 
+               currently managing.
+            </div>  
+         </div>
+   
+         <a id="c1_pubprop_tile_borders_visible"></a>
+         <div class="property">
+            <div class="property_name">
+               tile_borders_visible: boolean
+            </div>
+            <div class="property_desc">
+               Get or set whether or not tile borders will be visible on the map.  When set to true, 
+               tile borders will be visible.  When set to false, tile borders are not displayed.
+            </div>  
+         </div>
+   
+         <a id="c1_pubprop_tile_count"></a>
+         <div class="property">
+            <div class="property_name">
+               tile_count: number
+            </div>
+            <div class="property_desc">
+               Read Only.  Returns the number of tiles visible in the map viewport 
+               that have data points associated with them.
+            </div> 
+         </div>
+         
+         <a id="c1_pubprop_tile_grid_point_cols"></a>
+         <div class="property">
+            <div class="property_name">
+               tile_grid_point_cols: number
+            </div>
+            <div class="property_desc">
+               Read Only.  Returns the number of grid point columns in a tile.
+            </div> 
+         </div>
+         
+         <a id="c1_pubprop_tile_grid_point_index_max"></a>
+         <div class="property">
+            <div class="property_name">
+               tile_grid_point_index_max: number
+            </div>
+            <div class="property_desc">
+               Read Only.  Returns the maximum grid point index within a tile.
+            </div> 
+         </div>
+
+         <a id="c1_pubprop_tile_grid_point_rows"></a>
+         <div class="property">
+            <div class="property_name">
+               tile_grid_point_rows: number
+            </div>
+            <div class="property_desc">
+               Read Only.  Returns the number of grid point rows in a tile.
+            </div> 
+         </div>
+
+         <a id="c1_pubprop_tile_height"></a>
+         <div class="property">
+            <div class="property_name">
+               tile_height: number
+            </div>
+            <div class="property_desc">
+               Read Only.  The height of a tile in pixels.
+            </div>  
+         </div>
+
+         <a id="c1_pubprop_tile_index_max"></a>
+         <div class="property">
+            <div class="property_name">
+               tile_index_max: number
+            </div>
+            <div class="property_desc">
+               Read Only.  Returns the maximum index for a tile that is visible in the map 
+               viewport.  Will be -1 if unable to determine the maximum index (due to the
+               map or map bounds not being set).
+            </div>  
+         </div>
+         
+         <a id="c1_pubprop_tile_width"></a>
+         <div class="property">
+            <div class="property_name">
+               tile_width: number
+            </div>
+            <div class="property_desc">
+               Read Only.  The width of a tile in pixels.
+            </div>  
+         </div>
+
+      </section>
+   
+      <section>
+         <a id="i1_cluster_marker_click_event"></a>
+         <h2>Interface: cluster_marker_click_event</h2>
+         <div class="interface">
+            <div class="interface_desc">
+               This object is returned when a cluster marker click event
+               is raised on the map.
+            </div>
+            <h3>Propertes</h3>
+            <div class="property">
+               <div class="property_name">
+                  event: <a href="https://developers.google.com/maps/documentation/javascript/reference/map?hl=en#MapMouseEvent" target="_blank">google.maps.MapMouseEvent</a>
+               </div>
+               <div class="property_desc">
+                  A google.maps.MapMouseEvent object.
+               </div>
+            </div>
+            <div class="property">
+               <div class="property_name">
+                  tile: <a href="#i10_grid_tile">grid_tile</a>
+               </div>
+               <div class="property_desc">
+                  A grid_tile object that contains the marker that was clicked.
+               </div>
+            </div>
+         </div>
+      </section>
+   
+      <section>
+         <a id="i2_cluster_marker_create_event"></a>
+         <h2>Interface: cluster_marker_create_event</h2>
+         <div class="interface">
+            <div class="interface_desc">
+               This object is returned when a cluster marker needs to be created.
+            </div>
+            <h3>Properties</h3>
+            <div class="property">
+               <div class="property_name">
+                  tile: <a href="#i10_grid_tile">grid_tile</a>
+               </div>
+               <div class="property_desc">
+                  A grid_tile object that requires a cluster marker to be created.
+               </div>
+            </div>
+         </div>
+      </section>
+   
+      <section>
+         <a id="i3_cluster_marker_update_event"></a>
+         <h2>Interface: cluster_marker_update_event</h2>
+         <div class="interface">
+            <div class="interface_desc">
+               This object is returned when a cluster marker needs to be updated.
+            </div>
+            <h3>Properties</h3>
+            <div class="property">
+               <div class="property_name">
+                  tile: <a href="#i10_grid_tile">grid_tile</a>
+               </div>
+               <div class="property_desc">
+                  A grid_tile object for which a cluster marker label or title may need to be updated.
+               </div>
+            </div>
+         </div>
+      </section>
+   
+      <section>
+         <a id="i4_data_point"></a>
+         <h2>Interface: data_point</h2>
+         <div class="interface">
+            <div class="interface_desc">
+               This object is used to provide data keys and latitude / longitude values to
+               the grid clusterer.
+            </div>
+            <h3>Properties</h3>
+            <div class="property">
+               <div class="property_name">
+                  key: string | number
+               </div>
+               <div class="property_desc">
+                  A unique string or number.
+               </div>
+            </div>
+            <div class="property">
+               <div class="property_name">
+                  lat: number
+               </div>
+               <div class="property_desc">
+                  A latitude value.  Latitude values must be between -85.051128 and +85.051128. 
+                  Data points with latitude values outside of this range will be ignored (not used).
+               </div>
+            </div>
+            <div class="property">
+               <div class="property_name">
+                  lon: number
+               </div>
+               <div class="property_desc">
+                  A longitude value. Longitude values must be between -180 and +180. Data points 
+               with longitude values outside of this range will be ignored (not used).
+               </div>
+            </div>
+         </div>
+      </section>
+   
+      <section>
+         <a id="i5_grid_clusterer_options"></a>
+         <h2>Interface: grid_clusterer_options</h2>
+         <div class="interface">
+            <div class="interface_desc">
+               This object is used to define the properties that can be set on a 
+               <a href="#c1_class_grid_clusterer">grid_clusterer</a>.
+            </div>
+            <h3>Properties</h3>
+            <a id="i5_prop_cluster_marker_click_check"></a>
+            <div class="property">
+               <div class="property_name">
+                  cluster_marker_click_check: boolean
+               </div>
+               <div class="property_desc">
+                  <p>
+                     Optional.  Default: true
+                  </p>
+                  <p>
+                     A boolean flag used to check if a cluster marker click event resulted in tiles being updated.
+                  </p>
+                  <p>
+                     By default, when a cluster marker is clicked, the clusterer will try to use the Google maps 
+                     .fitBounds() method to fit the data points associated with the grid tile in the map viewport.
+                     However, there are cases when the number of data points in a tile may already &quot;fit&quot; 
+                     in the map viewport and so no &quot;zoom-in&quot; effect occurs, making it appear that the 
+                     cluster marker click had no effect.
+                  </p>
+                  <p>
+                     Setting this flag to true will cause the clusterer to check if the tile containing the cluster 
+                     marker that was clicked is still visible after the click event, and if so, will zoom in one level.
+                  </p>
+                  <p>
+                     See <a href="./ex3/index.html">an example that illustrates the behavior of this setting</a>.
+                  </p>
+               </div>
+            </div>
+            <a id="i5_prop_cluster_marker_click_event_name"></a>
+            <div class="property">
+               <div class="property_name">
+                  cluster_marker_click_event_name: string
+               </div>
+               <div class="property_desc">
+                  <p>
+                     Optional.  Default: null.
+                  </p>
+                  <p>
+                     A string containing the event name to use when a cluster marker is clicked.  If null, 
+                     then no event will be triggered.  Setting this value allows you to listen for the event 
+                     name which will be triggered on the map.
+                  </p>
+                  <b>Example</b>
+                  <p>To configure a cluster marker click event name and listen for the event:</p>
+                  <div class="code_div">
+                     <pre>
+   // Update clusterer configuration ...
+   // Notes:
+   // 1. We set the cluster_marker_click_event_name we will listen for. 
+   // 2. We set the cluster_marker_click_handler to null, this
+   //       disables the internal default handler. Not required, but
+   //       if not done both handlers would be called.
+
+   var opts = { 
+      cluster_marker_click_event_name: 'cluster_click',
+      cluster_marker_click_handler: null  
+   };
+
+   clusterer.configure( opts );
+
+
+   // Tell Google maps to listen for our event and call our handler.
+   // The map argument is a google.maps.Map object
+   // The evt argument is a <a href="#i1_cluster_marker_click_event">cluster_marker_click_event</a> 
+
+   google.maps.event.addListener( map, 'cluster_click', ( evt ) =&gt; {
+
+      // Do the voodoo you need to do ...
+
+      console.log( 'Cluster marker clicked in tile at index: ' + evt.tile.idx );
+               
+   } );
+                     </pre>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <a id="i5_prop_cluster_marker_click_handler"></a>
+         <div class="property">
+            <div class="property_name">
+               cluster_marker_click_handler: <a href="#t2_cluster_marker_click_handler">cluster_marker_click_handler</a>
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional.  Default: Use internal default handler.
+               </p>
+               <p>
+                  The function to invoke when a grid tiles cluster marker is clicked.
+               </p>
+               <p>
+                  If null, no handler will be invoked when a cluster marker is clicked,
+                  however, if a <a href="#i5_prop_cluster_marker_click_event_name">cluster_marker_click_event_name</a> 
+                  is set to an event name, an event with that name will be triggered on the map when a 
+                  cluster marker is clicked and a listener can be set-up to act on the event.
+               </p>
+               <b>Example</b>
+               <p>To configure a cluster marker click handler:</p>
+               <div class="code_div">
+                  <pre>
+   // Define your function to handle cluster marker click events ...
+   // The evt argument is a <a href="#i1_cluster_marker_click_event">cluster_marker_click_event</a>
+
+   my_cluster_marker_click_handler( evt ) {
+
+      // Do the voodoo you need to do ...
+      
+      console.log( 'Cluster marker clicked in tile at index: ' + evt.tile.idx );
+
+   }
+
+
+   // Update clusterer configuration ...
+
+   var opts = { 
+      cluster_marker_click_handler: my_cluster_marker_click_handler 
+   };
+
+   clusterer.configure( opts );
+                  </pre>
+               </div>
+            </div>
+         </div>
+         <a id="i5_prop_cluster_marker_create_handler"></a>
+         <div class="property">
+            <div class="property_name">
+               cluster_marker_create_handler: <a href="#t3_cluster_marker_create_handler">cluster_marker_create_handler</a>
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional. Default: Use the clusterers internal default function.
+               </p>
+               <p>
+                  The function invoked by the <a href="#c1_pubmeth_redraw">redraw</a> 
+                  method to create cluster markers.  If null, then cluster marker
+                  creation will be disabled.
+               </p>
+               <b>Example</b>
+               <p>To configure a cluster marker create handler:</p>
+               <div class="code_div">
+                  <pre>
+   // Define your function to handle cluster marker create events ...
+   // The evt argument is a <a href="#i2_cluster_marker_create_event">cluster_marker_create_event</a>
+
+   my_cluster_marker_create_handler( evt ) {
+
+      // Use the number of data points as the marker label and title ...
+
+      var marker_title = evt.tile.data_keys.length.toString();
+
+      // Set marker options ...
+
+      var marker_opts = { 
+         icon: { 
+            fillColor: '#0000FF',
+            fillOpacity: 0.8, 
+            path: google.maps.SymbolPath.CIRCLE, 
+            scale: 31, 
+            strokeColor: '#FFFFFF', 
+            strokeWeight: 2.0 
+         },
+         label: {
+            color: '#000000', 
+            fontFamily: 'Arial,sans-serif', 
+            fontSize: '9pt', 
+            fontWeight: 'bold', 
+            text: marker_title
+         },
+         map: null, 
+         position: evt.tile.bounds.getCenter(),
+         title: marker_title,
+         zIndex: google.maps.Marker.MAX_ZINDEX + evt.tile.data_keys.length
+      };
+
+      // Return marker used by the grid tile ...
+
+      return new google.maps.Marker( marker_opts );
+      
+   }
+
+
+   // Update clusterer configuration ...
+
+   var opts = { 
+      cluster_marker_create_handler: my_cluster_marker_create_handler 
+   };
+
+   clusterer.configure( opts );
+                  </pre>
+               </div>
+            </div>
+         </div>
+         <a id="i5_prop_cluster_marker_icon_default"></a>
+         <div class="property">
+            <div class="property_name">
+               cluster_marker_icon_default: string | 
+               <a href="https://developers.google.com/maps/documentation/javascript/reference/marker#Icon" target="_blank">google.maps.Icon</a> | 
+               <a href="https://developers.google.com/maps/documentation/javascript/reference/marker#Symbol" target="_blank">google.maps.Symbol</a>
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional.  Default: The internal default cluster icon, as shown below:
+               </p>
+               <div class="code_div">
+                  <pre>
+   { 
+      fillColor: '#008000',
+      fillOpacity: 0.8, 
+      path: google.maps.SymbolPath.CIRCLE, 
+      scale: 31, 
+      strokeColor: '#FFFFFF', 
+      strokeWeight: 2.0 
+   };
+                  </pre>
+               </div>
+               <p>
+                  This value is used by the internal default cluster marker create handler when cluster markers 
+                  need to be created. The value is used for the &quot;icon&quot; property of the 
+                  <a href="https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerOptions" target="_blank">google.maps.MarkerOptions</a> 
+                  interface, and may be any one of the following:
+               </p>
+               <ul>
+                  <li>A string</li>
+                  <li>A <a href="https://developers.google.com/maps/documentation/javascript/reference/marker#Icon" target="_blank">google.maps.Icon</a></li>
+                  <li>A <a href="https://developers.google.com/maps/documentation/javascript/reference/marker#Symbol" target="_blank">google.maps.Symbol</a></li>
+               </ul>
+               <b>Example</b>
+               <p>To configure a cluster marker default icon:</p>
+               <div class="code_div">
+                  <pre>
+   // Define your default cluster marker icon ...
+   // Create a nifty blue SVG icon ...
+
+   var color = '#0000FF';
+
+   var svg = window.btoa(`
+      &lt;svg fill=&quot;${color}&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 256 256&quot;&gt; 
+      &lt;circle cx=&quot;128&quot; cy=&quot;128&quot; opacity=&quot;.6&quot; r=&quot;70&quot; /&gt; 
+      &lt;circle cx=&quot;128&quot; cy=&quot;128&quot; opacity=&quot;.3&quot; r=&quot;90&quot; /&gt; 
+      &lt;circle cx=&quot;128&quot; cy=&quot;128&quot; opacity=&quot;.2&quot; r=&quot;110&quot; /&gt; 
+      &lt;/svg&gt;`);
+
+   var my_cluster_icon = {
+      url: `data:image/svg+xml;base64,${svg}`,
+      scaledSize: new google.maps.Size( 64, 64 ),
+      anchor: new google.maps.Point( 32, 32 ),
+      labelOrigin: new google.maps.Point( 32, 32 )
+      };
+
+
+   // Update clusterer configuration ...
+
+   var opts = { 
+      cluster_marker_icon_default: my_cluster_icon
+   };
+
+   clusterer.configure( opts );
+                  </pre>
+               </div>
+            </div>
+         </div>
+         <a id="i5_prop_cluster_marker_label_default"></a>
+         <div class="property">
+            <div class="property_name">
+               cluster_marker_label_default: <a href="https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerLabel" target="_blank">google.maps.MarkerLabel</a> 
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional.  Default: The internal default cluster label, as shown below:
+               </p>
+               <div class="code_div">
+                  <pre>
+   {
+      color: '#FFFFFF', 
+      fontFamily: 'Arial,sans-serif', 
+      fontSize: '9pt', 
+      fontWeight: 'bold', 
+      text: '*'
+   }
+               </pre>
+            </div>
+            <p>
+               A <a href="https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerLabel" target="_blank">google.maps.MarkerLabel</a> 
+               used by the default handlers when cluster markers are created or updated.
+            </p>
+            <p>
+               Note that when a cluster marker is created or updated, the label text will be updated to show 
+               the number of data points associated with the grid tile.
+            </p>
+            <b>Example</b>
+            <p>To configure a cluster marker default label:</p>
+            <div class="code_div">
+                  <pre>
+   // Define your default cluster marker label ...
+   // Change label color to yellow ...
+
+   var my_cluster_label = {
+      color: 'yellow', 
+      fontFamily: 'Arial,sans-serif', 
+      fontSize: '9pt', 
+      fontWeight: 'bold', 
+      text: '*'
+      };
+
+
+   // Update clusterer configuration ...
+
+   var opts = { 
+      cluster_marker_label_default: my_cluster_label
+   };
+
+   clusterer.configure( opts );
+                  </pre>
+               </div>
+            </div>
+         </div>
+         <a id="i5_prop_cluster_marker_update_handler"></a>
+         <div class="property">
+            <div class="property_name">
+               cluster_marker_update_handler: <a href="#t4_cluster_marker_update_handler">cluster_marker_update_handler</a> 
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional. Default: Use the clusterers internal default function.
+               </p>
+               <p>
+                  The function invoked by the <a href="#c1_pubmeth_redraw">redraw</a> 
+                  method to update cluster markers.  If null, then cluster marker
+                  updates will be disabled.
+               </p>
+               <b>Example</b>
+               <p>To configure a cluster marker update handler:</p>
+               <div class="code_div">
+                  <pre>
+   // Define your function to handle cluster marker update events ...
+   // The evt argument is a <a href="#i3_cluster_marker_update_event">cluster_marker_update_event</a>
+
+   my_cluster_marker_update_handler( evt ) {
+
+      if ( evt.tile.marker instanceof google.maps.Marker ) {
+
+         // Update the markers label and title ...
+
+         var data_count_str = evt.tile.data_keys.length.toString();
+
+         evt.tile.marker.setLabel( data_count_str );
+   
+         evt.tile.marker.setTitle( data_count_str );
+
+      }
+
+   }
+
+
+   // Update clusterer configuration ...
+
+   var opts = { 
+      cluster_marker_update_handler: my_cluster_marker_update_handler 
+   };
+
+   clusterer.configure( opts );
+                  </pre>
+               </div>
+            </div>
+         </div>
+         <div class="property">
+            <div class="property_name">
+               cluster_size_min: number
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional.  Default: 10, Minimum: 1, Maximum: Number.MAX_SAFE_INTEGER
+               </p>
+               <p>
+                  The minimum number of data points that is required to form a 
+                  cluster marker within a tile.
+               </p>
+            </div>
+         </div>
+         <div class="property">
+            <div class="property_name">
+               cluster_zoom_max: number
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional.  Default: 14, Minimum: 1, Maximum: Max zoom level of map. 
+               </p>
+               <p>
+                  The maximum zoom level that tile cluster markers will appear.  
+                  When the map zoom level is greater than this value, only grid point markers 
+                  will be displayed
+               </p>
+            </div>
+         </div>
+         <a id="i5_prop_grid_point_cols"></a>
+         <div class="property">
+            <div class="property_name">
+               grid_point_cols: number
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional.  Default: 4, Minimum: 1, Maximum: see below.
+               </p>
+               <p>
+                  The maximum number of columns that a grid point should contain.
+                  Note that the number of columns will be limited based on the current
+                  tile size.  For example, if the tile size is 128 x 128 pixels,
+                  the <b>maximum number of columns allowed</b> will be: 128 / 64 = 2; 
+                  because the internal maximum size of a grid point (box) is 64 x 64 pixels.
+               </p>
+            </div>
+         </div>
+         <a id="i5_prop_grid_point_marker_click_event_name"></a>
+         <div class="property">
+            <div class="property_name">
+               grid_point_marker_click_event_name: string
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional.  Default: null.
+               </p>
+               <p>
+                  A string containing the event name to use when a grid point marker is clicked.  If null, 
+                  then no event will be triggered.
+               </p>
+               <b>Example</b>
+               <p>To configure a grid point marker click event name and listen for the event:</p>
+               <div class="code_div">
+                  <pre>
+   // Update clusterer configuration ...
+   // Notes:
+   // 1. We set the grid_point_marker_click_event_name we will listen for. 
+   // 2. We set the grid_point_marker_click_handler to null, this
+   //       disables the internal default handler. Not required, but
+   //       if not done both handlers would be called.
+
+   var opts = { 
+      grid_point_marker_click_event_name: 'grid_point_click',
+      grid_point_marker_click_handler: null  
+   };
+
+   clusterer.configure( opts );
+
+
+   // Tell Google maps to listen for our event and call our handler.
+   // The map argument is a google.maps.Map object
+   // The evt argument is a <a href="#i7_grid_point_marker_click_event">grid_point_marker_click_event</a>
+
+   google.maps.event.addListener( map, 'grid_point_click', ( evt ) =&gt; {
+
+      // Do the voodoo you need to do ...
+
+      console.log( 'Grid point marker clicked in grid point at index: ' + evt.grid_point.idx );
+               
+   } );
+                  </pre>
+               </div>
+            </div>
+         </div>
+         <div class="property">
+            <div class="property_name">
+               grid_point_marker_click_handler: <a href="#t5_grid_point_marker_click_handler">grid_point_marker_click_handler</a>
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional.  Default: Use internal default handler.
+               </p>
+               <p>
+                  The function to invoke when a grid point marker is clicked.
+               </p>
+               <p>
+                  If null, no handler will be invoked when a grid point marker is clicked,
+                  however, if a <a href="#i5_prop_grid_point_marker_click_event_name">grid_point_marker_click_event_name</a> 
+                  is set to an event name, an event with that name will be triggered on the map when a 
+                  grid point marker is clicked and a listener can be set-up to act on the event.
+               </p>
+               <b>Example</b>
+               <p>To configure a grid point marker click handler:</p>
+               <div class="code_div">
+                  <pre>
+   // Define your function to handle grid point marker click events ...
+   // The evt argument is a <a href="#i7_grid_point_marker_click_event">grid_point_marker_click_event</a>
+
+   my_grid_point_marker_click_handler( evt ) {
+
+      // Do the voodoo you need to do ...
+
+      console.log( 'Grid point marker clicked in grid point at index: ' + evt.grid_point.idx );
+
+   }
+
+
+   // Update clusterer configuration ...
+
+   var opts = { 
+      grid_point_marker_click_handler: my_grid_point_marker_click_handler 
+   };
+
+   clusterer.configure( opts );
+                  </pre>
+               </div>
+            </div>
+         </div>
+         <a id="i5_prop_grid_point_marker_create_handler"></a>
+         <div class="property">
+            <div class="property_name">
+               grid_point_marker_create_handler: <a href="#t6_grid_point_marker_create_handler">grid_point_marker_create_handler</a>
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional. Default: Use the clusterers internal default function.
+               </p>
+               <p>
+                  The function invoked by the <a href="#c1_pubmeth_redraw">redraw</a> 
+                  method to create grid point markers.  If null, then grid point
+                  marker creation will be disabled, that is, grid point markers
+                  will never be displayed.
+               </p>
+               <b>Example</b>
+               <p>To configure a grid point marker create handler:</p>
+               <div class="code_div">
+                  <pre>
+   // Define your function to handle grid point marker create events ...
+   // The evt argument is a <a href="#i8_grid_point_marker_create_event">grid_point_marker_create_event</a>
+
+   my_grid_point_marker_create_handler( evt ) {
+
+      // Use the number of data points as the marker label and title ...
+
+      var marker_title = evt.grid_point.data_keys.length.toString();
+
+      // Set marker options ...
+
+      var marker_opts = { 
+         icon: { 
+            fillColor: '#00FF00',
+            fillOpacity: 0.8, 
+            path: google.maps.SymbolPath.CIRCLE, 
+            scale: 31, 
+            strokeColor: '#FFFFFF', 
+            strokeWeight: 2.0 
+         },
+         label: {
+            color: '#000000', 
+            fontFamily: 'Arial,sans-serif', 
+            fontSize: '9pt', 
+            fontWeight: 'bold', 
+            text: marker_title
+         },
+         map: null, 
+         position: evt.grid_point.bounds.getCenter(),
+         title: marker_title,
+         zIndex: google.maps.Marker.MAX_ZINDEX + evt.grid_point.data_keys.length
+      };
+
+      // Return marker used by the grid point ...
+
+      return new google.maps.Marker( marker_opts );
+      
+   }
+
+
+   // Update clusterer configuration ...
+
+   var opts = { 
+      grid_point_marker_create_handler: my_grid_point_marker_create_handler 
+   };
+
+   clusterer.configure( opts );
+                  </pre>
+               </div>
+            </div>
+         </div>
+         <div class="property">
+            <div class="property_name">
+               grid_point_marker_icon_default: string | 
+               <a href="https://developers.google.com/maps/documentation/javascript/reference/marker#Icon" target="_blank">google.maps.Icon</a> | 
+               <a href="https://developers.google.com/maps/documentation/javascript/reference/marker#Symbol" target="_blank">google.maps.Symbol</a>
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional.  Default: The internal default grid point icon, as shown below:
+               </p>
+               <div class="code_div">
+                  <pre>
+   { 
+      fillColor: '#DB4437', 
+      fillOpacity: 0.8, 
+      path: google.maps.SymbolPath.CIRCLE, 
+      scale: 23,
+      strokeColor: '#FFFFFF', 
+      strokeWeight: 2.0 
+   }
+                  </pre>
+               </div>
+               <p>
+                  This value is used by the internal default grid point marker create handler when 
+                  grid point markers need to be created. The value is used for the &quot;icon&quot; property of the 
+                  <a href="https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerOptions" target="_blank">google.maps.MarkerOptions</a> 
+                  interface, and may be any one of the following:
+               </p>
+               <ul>
+                  <li>A string</li>
+                  <li>A <a href="https://developers.google.com/maps/documentation/javascript/reference/marker#Icon" target="_blank">google.maps.Icon</a></li>
+                  <li>A <a href="https://developers.google.com/maps/documentation/javascript/reference/marker#Symbol" target="_blank">google.maps.Symbol</a></li>
+               </ul>
+               <b>Example</b>
+               <p>To configure a grid point marker default icon:</p>
+               <div class="code_div">
+                  <pre>
+   // Define your default grid point marker icon ...
+   // Create a nifty blue SVG icon ...
+
+   var color = '#0000FF';
+
+   var svg = window.btoa(` 
+    &lt;svg fill=&quot;${color}&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 256 256&quot;&gt; 
+    &lt;rect x=&quot;0&quot; y=&quot;0&quot; width=&quot;100%&quot; height=&quot;100%&quot;/&gt; 
+   &lt;/svg&gt;`);
+
+   var my_grid_point_icon = {
+      url: `data:image/svg+xml;base64,${svg}`,
+      scaledSize: new google.maps.Size( 32, 32 ),
+      anchor: new google.maps.Point( 16, 16 ),
+      labelOrigin: new google.maps.Point( 16, 16 )
+   };
+
+
+   // Update clusterer configuration ...
+
+   var opts = { 
+      grid_point_marker_icon_default: my_grid_point_icon
+   };
+
+   clusterer.configure( opts );
+                  </pre>
+               </div>
+            </div>
+         </div>
+         <div class="property">
+            <div class="property_name">
+               grid_point_marker_label_default: <a href="https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerLabel" target="_blank">google.maps.MarkerLabel</a> 
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional.  Default: The internal grid point default label, as shown below:
+               </p>
+               <div class="code_div">
+                  <pre>
+   { 
+      color: '#FFFFFF', 
+      fontFamily: 'Arial,sans-serif', 
+      fontSize: '9pt', 
+      fontWeight: 'bold', 
+      text: '*'
+   }
+                  </pre>
+               </div>
+               <p>
+                  A <a href="https://developers.google.com/maps/documentation/javascript/reference/marker#MarkerLabel" target="_blank">google.maps.MarkerLabel</a> 
+                  used by the internal default handlers when grid point markers are created or updated.
+               </p>
+               <p>
+                  Note that when a grid point marker is created or updated, the label text will be updated to show 
+                  the number of data points associated with the grid point.
+               </p>
+               <b>Example</b>
+               <p>To configure a grid point marker default label:</p>
+               <div class="code_div">
+                     <pre>
+      // Define your default grid point marker label ...
+      // Change label color to yellow ...
+   
+      var my_grid_point_label = {
+         color: 'yellow', 
+         fontFamily: 'Arial,sans-serif', 
+         fontSize: '9pt', 
+         fontWeight: 'bold', 
+         text: '*'
+         };
+   
+
+      // Update clusterer configuration ...
+   
+      var opts = { 
+         grid_point_marker_label_default: my_grid_point_label
+      };
+   
+      clusterer.configure( opts );
+                     </pre>
+                  </div>
+            </div>
+         </div>
+         <a id="i5_prop_grid_point_marker_update_handler"></a>
+         <div class="property">
+            <div class="property_name">
+               grid_point_marker_update_handler: <a href="#t7_grid_point_marker_update_handler">grid_point_marker_update_handler</a>
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional. Default: Use the clusterers internal default function..
+               </p>
+               <p>
+                  The function invoked by the <a href="#c1_pubmeth_redraw">redraw</a> 
+                  method to update grid point markers.  If null, then grid point
+                  marker updates will be disabled.
+               </p>
+               <b>Example</b>
+               <p>To configure a grid point marker update handler:</p>
+               <div class="code_div">
+                  <pre>
+   // Define your function to handle grid point marker update events ...
+   // The evt argument is a <a href="#i9_grid_point_marker_update_event">grid_point_marker_update_event</a>
+
+   my_grid_point_marker_update_handler( evt ) {
+
+      if ( evt.grid_point.marker instanceof google.maps.Marker ) {
+
+         // Update the markers label and title ...
+
+         var data_count_str = evt.grid_point.data_keys.length.toString();
+
+         evt.grid_point.marker.setLabel( data_count_str );
+   
+         evt.grid_point.marker.setTitle( data_count_str );
+
+      }
+
+   }
+
+
+   // Update clusterer configuration ...
+
+   var opts = { 
+      grid_point_marker_update_handler: my_grid_point_marker_update_handler 
+   };
+
+   clusterer.configure( opts );
+                  </pre>
+               </div>
+            </div>
+         </div>
+         <a id="i5_prop_grid_point_rows"></a>
+         <div class="property">
+            <div class="property_name">
+               grid_point_rows: number
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional.  Default: 4, Minimum: 1, Maximum: see below.
+               </p>
+               <p>
+                  The maximum number of rows that a grid point should contain.
+                  Note that the number of rows will be limited based on the current
+                  tile size.  For example, if the tile size is 128 x 128 pixels,
+                  the <b>maximum number of rows allowed</b> will be: 128 / 64 = 2; 
+                  because the internal maximum size of a grid point (box) is 64 x 64 pixels.
+               </p>
+            </div>
+         </div>
+         <div class="property">
+            <div class="property_name">
+               tile_border_color: string
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional.  Default: '#008000'
+               </p>
+               <p>
+                  Any valid CSS color string, for example: 'red' or '#FF0000'
+                  See: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color" target="_blank">https://developer.mozilla.org/en-US/docs/Web/CSS/color</a>
+               </p>
+            </div>
+         </div>      
+         <div class="property">
+            <div class="property_name">
+               tile_border_style: string
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional.  Default: 'dashed'
+               </p>
+               <p>
+                  Any valid CSS style string, for example: 'solid' or 'dotted'
+                  See: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-style" target="_blank">https://developer.mozilla.org/en-US/docs/Web/CSS/border-style</a>
+               </p>
+            </div>
+         </div>
+         <div class="property">
+            <div class="property_name">
+               tile_border_width: string
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional.  Default: '1px'
+               </p>
+               <p>
+                  Any valid CSS string, for example: 'thin' or '1px'
+                  See: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-width" target="_blank">https://developer.mozilla.org/en-US/docs/Web/CSS/border-width</a>
+               </p>
+            </div>
+         </div>      
+         <div class="property">
+            <div class="property_name">
+               tile_borders_visible: boolean
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional.  Default: false
+               </p>
+               <p>
+                  A boolean value used to indicate if tile borders should be visible or not.
+                  If true, tile bounds will be visible on the map.  
+                  If false, tile bounds are not used.
+               </p>
+            </div>
+         </div>
+         <div class="property">
+            <div class="property_name">
+               tile_size: <a href="https://developers.google.com/maps/documentation/javascript/reference/coordinates?hl=en#Size" target="_blank">google.maps.Size</a> 
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional. Default: 256 x 256, Minimum: 128 x 128, Maximum: 512 x 512
+               </p>
+               <p>
+                  A <a href="https://developers.google.com/maps/documentation/javascript/reference/coordinates?hl=en#Size" target="_blank">google.maps.Size</a> 
+                  object that contains the tile size (in pixels) to be used.
+               </p>
+            </div>
+         </div>      
+         <div class="property">
+            <div class="property_name">
+               tiles_redraw_end_event_name: string
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional.  Default: null
+               </p>
+               <p>
+                  A string containing the event name to use (trigger) on the map when the 
+                  redraw method ends. If null, then the event will never be triggered.
+               </p>
+            </div>
+         </div>
+         <div class="property">
+            <div class="property_name">
+               tiles_redraw_start_event_name: string
+            </div>
+            <div class="property_desc">
+               <p>
+                  Optional.  Default: null
+               </p>
+               <p>
+                  A string containing the event name to use (trigger) on the map when the 
+                  redraw method starts. If null, then the event will never be triggered.
+               </p>
+            </div>
+         </div>
+      </section>
+   
+      <section>
+         <a id="i6_grid_point"></a>
+         <h2>Interface: grid_point</h2>
+         <div class="interface">
+            <div class="interface_desc">
+               This object contains information about a specific grid point within a tile.
+            </div>
+            <h3>Properties</h3>
+            <div class="property">
+               <div class="property_name">
+                  idx
+               </div>
+               <div class="property_desc">
+                  <p>
+                     The grid point index.  This number will be between 0 and
+                     ( <a href="#i5_prop_grid_point_rows">grid_point_rows</a> * <a href="#i5_prop_grid_point_cols">grid_point_cols</a> ) - 1.
+                     Grid point index 0 is always the grid box in the top left corner of the tile, 
+                     moving left to right in column, then row order.
+                  </p>
+               </div>
+            </div>
+            <div class="property">
+               <div class="property_name">
+                  tile
+               </div>
+               <div class="property_desc">
+                  <p>
+                     The <a href="#i10_grid_tile">grid_tile</a> this grid point belongs to.
+                  </p>
+               </div>
+            </div>
+            <div class="property">
+               <div class="property_name">
+                  bounds
+               </div>
+               <div class="property_desc">
+                  <p>
+                     A <a href="https://developers.google.com/maps/documentation/javascript/reference/coordinates?hl=en#LatLngBounds" target="_blank">google.maps.LatLngBounds</a> 
+                     object that contains latitude / longitude bounds of this grid point.
+                  </p>
+               </div>
+            </div>   
+            <div class="property">
+               <div class="property_name">
+                  marker
+               </div>
+               <div class="property_desc">
+                  <p>
+                     A <a href="#t8_map_marker">map_marker</a> object that is the grid point marker for this grid point.
+                  </p>
+               </div>
+            </div>
+            <div class="property">
+               <div class="property_name">
+                  data_keys
+               </div>
+               <div class="property_desc">
+                  <p>
+                     An array of <a href="#i4_data_point">data_point</a> keys that are associated
+                     with this grid point.
+                  </p>
+               </div>
+            </div>
+         </div>
+      </section>
+   
+      <section>
+         <a id="i7_grid_point_marker_click_event"></a>
+         <h2>Interface: grid_point_marker_click_event</h2>
+         <div class="interface">
+            <div class="interface_desc">
+               This object is returned when a grid point marker click event is raised on the map.
+            </div>
+            <h3>Properties</h3>
+            <div class="property">
+               <div class="property_name">
+                  event
+               </div>
+               <div class="property_desc">
+                  <p>
+                     A <a href="https://developers.google.com/maps/documentation/javascript/reference/map?hl=en#MapMouseEvent" target="_blank">google.maps.MapMouseEvent</a> object.
+                  </p>
+               </div>
+            </div>
+            <div class="property">
+               <div class="property_name">
+                  grid_point
+               </div>
+               <div class="property_desc">
+                  <p>
+                     A <a href="#i6_grid_point">grid_point</a> object that contains the marker that
+                     was clicked.
+                  </p>   
+               </div>
+            </div>
+         </div>
+      </section>
+   
+      <section>
+         <a id="i8_grid_point_marker_create_event"></a>
+         <h2>Interface: grid_point_marker_create_event</h2>
+         <div class="interface">
+            <div class="interface_desc">
+               This object is returned when a grid point marker needs to be created.
+            </div>
+            <h3>Properties</h3>
+            <div class="property">
+               <div class="property_name">
+                  grid_point
+               </div>
+               <div class="property_desc">
+                  <p>
+                     A <a href="#i6_grid_point">grid_point</a> object for which a grid point marker
+                     needs to be created.
+                  </p>
+               </div>
+            </div>
+         </div>
+      </section>
+   
+      <section>
+         <a id="i9_grid_point_marker_update_event"></a>
+         <h2>Interface: grid_point_marker_update_event</h2>
+         <div class="interface">
+            <div class="interface_desc">
+               This object is returned when a grid point marker needs to be updated.
+            </div>
+            <h3>Properties</h3>
+            <div class="property">
+               <div class="property_name">
+                  grid_point
+               </div>
+               <div class="property_desc">
+                  <p>
+                     A <a href="#i6_grid_point">grid_point</a> object for which a grid point marker
+                     may need to be updated.
+                  </p>
+               </div>
+            </div>
+         </div>
+      </section>
+   
+      <section>
+         <a id="i10_grid_tile"></a>
+         <h2>Interface: grid_tile</h2>
+         <div class="interface">
+            <div class="interface_desc">
+               This object contains information about a specific grid tile within 
+               the map viewport.
+            </div>
+            <h3>Properties</h3>
+            <div class="property">
+               <div class="property_name">
+                  idx
+               </div>
+               <div class="property_desc">
+                  <p>
+                     This tiles index.  Tile indexes are numbered from 0 to n,
+                     where tile index 0 represents the tile that is visible in
+                     the top left corner of the map viewport.  Tile index 1 is
+                     the tile to the right of tile 0, in column, then row order.
+                  </p>
+               </div>
+            </div>
+            <div class="property">
+               <div class="property_name">
+                  coord
+               </div>
+               <div class="property_desc">
+                  <p>
+                     A <a href="https://developers.google.com/maps/documentation/javascript/reference/coordinates#Point" target="_blank">google.maps.Point</a>  
+                     object that contains this tiles x, y coordinate.
+                  </p>
+               </div>
+            </div>  
+            <div class="property">
+               <div class="property_name">
+                  bounds
+               </div>
+               <div class="property_desc">
+                  <p>
+                     A <a href="https://developers.google.com/maps/documentation/javascript/reference/coordinates?hl=en#LatLngBounds" target="_blank">google.maps.LatLngBounds</a>
+                     object that is the latitude / longitude bounds of this tile.
+                  </p>
+               </div>
+            </div>   
+            <div class="property">
+               <div class="property_name">
+                  marker
+               </div>
+               <div class="property_desc">
+                  <p>
+                     A <a href="#t8_map_marker">map_marker</a> object that is the cluster marker for this tile.  Will be null 
+                     if the number of data keys (points) associated with this tile is less than the minimum number required to 
+                     form a cluster.
+                  </p>
+               </div>
+            </div>   
+            <div class="property">
+               <div class="property_name">
+                  data_bounds
+               </div>
+               <div class="property_desc">
+                  <p>
+                     A <a href="https://developers.google.com/maps/documentation/javascript/reference/coordinates?hl=en#LatLngBounds" target="_blank">google.maps.LatLngBounds</a>
+                     object that is the latitude / longitude bounds for all the 
+                     data points associated with this tile.
+                  </p>
+               </div>
+            </div>   
+            <div class="property">
+               <div class="property_name">
+                  data_keys
+               </div>
+               <div class="property_desc">
+                  <p>
+                     An array of <a href="#i4_data_point">data_point</a> keys 
+                     associated with this tile.
+                  </p>
+               </div>
+            </div>
+            <div class="property">
+               <div class="property_name">
+                  grid_points
+               </div>
+               <div class="property_desc">
+                  <p>
+                     An array of <a href="#i6_grid_point">grid_point</a> objects 
+                     associated with this tile.  Will be null if a cluster 
+                     marker is present in this tile.
+                  </p>
+               </div>
+            </div>
+            <div class="property">
+               <div class="property_name">
+                  zoom
+               </div>
+               <div class="property_desc">
+                  <p>
+                     The map zoom level that this tile was created at.            
+                  </p>
+               </div>
+            </div>
+         </div>
+      </section>
+   
+      <section>
+         <a id="t1_data_point_key"></a>
+         <h2>Type: data_point_key</h2>
+         <div class="type">
+            <div class="type_desc">
+               <p>
+                  A number or string that uniquely identifies a data point.
+               </p>
+            </div>
+         </div>
+      </section>
+   
+      <section>
+         <a id="t2_cluster_marker_click_handler"></a>
+         <h2>Type: cluster_marker_click_handler</h2>
+         <div class="type">
+            <p>
+               A function called by the clusterer to handle cluster marker click events.
+            </p>
+            <b>Arguments</b>
+            <div class="method_arg">
+               evt: <a href="#i1_cluster_marker_click_event">cluster_marker_click_event</a>
+            </div>
+            <b>Returns</b>
+            <div class="method_arg">
+               None
+            </div>
+            <b>Example</b>
+            <p>
+               Declare a custom cluster marker click handler function:
+            </p>
+            <div class="code_div">
+               <pre>
+   my_cluster_marker_click_handler( evt ) {
+
+      // The latitude/longitude that was below the cursor when the event occurred ...
+
+      console.log( 'evt.event.latLng: ' + evt.event.latLng );
+
+      // The tile index that contains the cluster marker ...
+      
+      console.log( 'evt.tile.idx: ' + evt.tile.idx );
+
+      // Fit the data bounds of this tile in the map viewport ...
+      
+      my_map.fitBounds( evt.tile.data_bounds );
+      
+   }
+               </pre>
+            </div>
+         </div>
+      </section>
+   
+      <section>
+         <a id="t3_cluster_marker_create_handler"></a>
+         <h2>Type: cluster_marker_create_handler</h2>
+         <div class="type">
+            <p>
+               A function called by the clusterer to handle cluster marker create events.
+            </p>
+            <b>Arguments</b>
+            <div class="method_arg">
+               evt: <a href="#i2_cluster_marker_create_event">cluster_marker_create_event</a> 
+            </div>
+            <b>Returns</b>
+            <div class="method_arg">
+               A <a href="#t8_map_marker">map_marker</a> object. 
+               The clusterer will add the returned marker to the newly created tile.
+            </div>
+            <b>Example</b>
+            <p>
+               Declare a custom cluster marker create handler function:
+            </p>
+            <div class="code_div">
+               <pre>
+   my_cluster_marker_create_handler( evt ) {
+      
+      // Use the tile center lat/lon for the marker position ...
+
+      var marker_position = evt.tile.bounds.getCenter();
+
+      // Use the number of data points (keys) for the title and label ...
+      
+      var data_count_str = evt.tile.data_keys.length.toString();
+      
+      // Set marker options ...
+      
+      var marker_opts = { 
+         map: null, 
+         position: marker_position,
+         label: data_count_str,
+         title: data_count_str,
+         zIndex: google.maps.Marker.MAX_ZINDEX + evt.tile.data_keys.length
+      };
+
+      // Return cluster marker ...
+
+      return new google.maps.Marker( marker_opts );
+         
+   }
+               </pre>
+            </div>
+         </div>
+      </section>
+   
+      <section>
+         <a id="t4_cluster_marker_update_handler"></a>
+         <h2>Type: cluster_marker_update_handler</h2>
+         <div class="type">
+            <p>
+               A function called by the clusterer to handle cluster marker update events.
+            </p>
+            <b>Arguments</b>
+            <div class="method_arg">
+               evt: <a href="#i3_cluster_marker_update_event">cluster_marker_update_event</a> 
+            </div>
+            <b>Returns</b>
+            <div class="method_arg">
+               None
+            </div>
+            <b>Example</b>
+            <p>
+               Declare a custom cluster marker update handler function:
+            </p>
+            <div class="code_div">
+               <pre>
+   my_cluster_marker_update_handler( evt ) {
+      
+      // Update the markers label and title ...
+
+      if ( evt.tile.marker instanceof google.maps.Marker ) {
+
+         var data_count_str = evt.tile.data_keys.length.toString();
+
+         evt.tile.marker.setLabel( data_count_str );
+
+         evt.tile.marker.setTitle( data_count_str );
+
+      }
+         
+   }
+               </pre>
+            </div>
+         </div>
+      </section>
+   
+      <section>
+         <a id="t5_grid_point_marker_click_handler"></a>
+         <h2>Type: grid_point_marker_click_handler</h2>
+         <div class="type">
+            <p>
+               A function called by the clusterer to handle grid point marker click events.
+            </p>
+            <b>Arguments</b>
+            <div class="method_arg">
+               evt: <a href="#i7_grid_point_marker_click_event">grid_point_marker_click_event</a>
+            </div>
+            <b>Returns</b>
+            <div class="method_arg">
+               None
+            </div>
+            <b>Example</b>
+            <p>
+               Declare a custom grid point marker click handler function:
+            </p>
+            <div class="code_div">
+               <pre>
+   my_grid_point_marker_click_handler( evt ) {
+
+      // The latitude/longitude that was below the cursor when the event occurred ...
+
+      console.log( 'evt.event.latLng: ' + evt.event.latLng );
+
+      // The grid point index that contains the grid point marker ...
+      
+      console.log( 'evt.grid_point.idx: ' + evt.grid_point.idx );
+
+      // Do whatever you want ...
+      
+   }
+               </pre>
+            </div>
+         </div>
+      </section>
+   
+      <section>
+         <a id="t6_grid_point_marker_create_handler"></a>
+         <h2>Type: grid_point_marker_create_handler</h2>
+         <div class="type">
+            <p>
+               A function called by the clusterer to handle grid point marker create events.
+            </p>
+            <b>Arguments</b>
+            <div class="method_arg">
+               evt: <a href="#i8_grid_point_marker_create_event">grid_point_marker_create_event</a> 
+            </div>
+            <b>Returns</b>
+            <div class="method_arg">
+               A <a href="#t8_map_marker">map_marker</a> object. 
+               The clusterer will add the returned marker to the newly created grid point.
+            </div>
+            <b>Example</b>
+            <p>
+               Declare a custom grid point marker create handler function:
+            </p>
+            <div class="code_div">
+               <pre>
+   my_grid_point_marker_create_handler( evt ) {
+      
+      // Use the grid point center lat/lon for the marker position ...
+
+      var marker_position = evt.grid_point.bounds.getCenter();
+
+      // Use the number of data points (keys) for the title and label ...
+      
+      var data_count_str = evt.grid_point.data_keys.length.toString();
+      
+      // Set marker options ...
+      
+      var marker_opts = { 
+         map: null, 
+         position: marker_position,
+         label: data_count_str,
+         title: data_count_str,
+         zIndex: google.maps.Marker.MAX_ZINDEX + evt.grid_point.data_keys.length
+      };
+
+      // Return grid point marker ...
+
+      return new google.maps.Marker( marker_opts );
+         
+   }
+               </pre>
+            </div>
+         </div>
+      </section>
+   
+      <section>
+         <a id="t7_grid_point_marker_update_handler"></a>
+         <h2>Type: grid_point_marker_update_handler</h2>
+         <div class="type">
+            <p>
+               A function called by the clusterer to handle grid point marker update events.
+            </p>
+            <b>Arguments</b>
+            <div class="method_arg">
+               evt: <a href="#i9_grid_point_marker_update_event">grid_point_marker_update_event</a> 
+            </div>
+            <b>Returns</b>
+            <div class="method_arg">
+               None
+            </div>
+            <b>Example</b>
+            <p>
+               Declare a custom grid point marker update handler function:
+            </p>
+            <div class="code_div">
+               <pre>
+   my_grid_point_marker_update_handler( evt ) {
+      
+      // Update the markers label and title ...
+
+      if ( evt.grid_point.marker instanceof google.maps.Marker ) {
+
+         var data_count_str = evt.grid_point.data_keys.length.toString();
+
+         evt.grid_point.marker.setLabel( data_count_str );
+
+         evt.grid_point.marker.setTitle( data_count_str );
+
+      }
+         
+   }
+               </pre>
+            </div>
+         </div>
+      </section>
+
+      <section>
+         <a id="t8_map_marker"></a>
+         <h2>Type: map_marker</h2>
+         <div class="type">
+            <div class="type_desc">
+               <p>
+                  One of the following:
+                  <ul>
+                     <li>A <a href="https://developers.google.com/maps/documentation/javascript/reference#marker" target="_blank">google.maps.Marker</a> object</li>
+                     <li>A <a href="https://developers.google.com/maps/documentation/javascript/reference#advanced-markers" target="_blank">google.maps.marker.AdvancedMarkerView</a> object</li>
+                     <li>null</li>
+                  </ul>
+               </p>
+            </div>
+         </div>
+      </section>
+
+   </main>
+   <footer>
+      Last updated on: 10-Dec-2022
+   </footer>
+</body>
+</html>
