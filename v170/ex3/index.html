@@ -1,1 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grid Clusterer v1.7.0 - Enabling and disabling cluster marker click checks</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link rel="preconnect" href="https://ajax.googleapis.com" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Kalam:300,400%7CSource+Sans+Pro:300,400,600,700" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../js/grid_clusterer.min.js"></script>
+<script src="tester.js"></script>
+<style>
+body, html {
+   background-color: #FFFFFF;
+   margin: 0;
+   padding: 0;
+   font-family: Roboto, Helvetica, sans-serif;
+}
 
+form {
+   margin: 0;
+}
+
+header {
+   border-bottom: 1px solid #AAAAAA;
+   font-size: 16pt;
+   font-weight: bold;
+   margin: 6px 12px 0 12px;
+   padding: 6px;
+   text-align: center;
+}
+
+main {
+  margin: 0;
+  padding: 6px 12px;
+}
+
+section {
+   margin: 0;
+   padding: 12px 12px 0 12px;
+}
+
+.map_viewport {
+    height: 514px;
+    width: 100%;
+    position: relative;
+    background: #EFEFEF;
+    display: block;
+    overflow: hidden;
+    border: 1px solid #AAAAAA;
+    margin: 6px 0;
+    padding: 0;
+}
+
+.map_footer {
+   margin: 2px;
+   padding: 4px;
+   text-align:center;
+}
+
+.test_div {
+   margin: 0 0 0 20px;
+   padding: 6px;
+}
+</style>
+</head>
+<body>
+   <header>
+      <a href="../index.html"><b>Grid Clusterer v1.7.0</b></a> - Enabling and disabling cluster marker click checks
+   </header>
+   <main>
+      <div class="map_viewport" id="mvp"></div>
+      <div class="map_footer">
+         Map Zoom Level: <span id="mzl" style="margin: 0 20px 0 0;font-weight:bold;"></span>
+         <input type="checkbox" id="cb_sdp" value="1">
+         <label for="cb_sdp">Show data points</label>
+      </div>
+      <section>
+         <p>
+            When cluster marker click checks are enabled (the default), the default cluster marker click handler will check
+            if the same cluster marker is still present on the map AFTER the click event, and if so, will zoom in one level.
+            You may customize the action(s) taken when a cluster marker is clicked as needed 
+            (see: <a href="../reference.html#i5_grid_clusterer_options">Clusterer Reference - Options</a>)
+         </p>
+      </section>
+      <section>
+         <form id="frm2" onsubmit="tester_obj.config_update( event );">
+            <input type="radio" id="rbtn2" name="fld_cluster_marker_click_checks" value="1" checked> 
+            <label for="rbtn2"><b>Enable cluster marker click checks</b></label>
+            <div class="test_div">
+               Test:
+               <ol>
+                  <li>
+                     Make sure the map zoom level is set to: <b>7</b>.
+                  </li>
+                  <li>
+                     Click the cluster marker.  The default cluster marker click handler calls the Google maps
+                     <a href="https://developers.google.com/maps/documentation/javascript/reference/map#Map.fitBounds" target="_blank">fitBounds()</a> 
+                     method.  The clusterer will check if the tile containing the cluster marker that was clicked is still present, and if so, will
+                     automatically &quot;zoom-in&quot; one level.
+                  </li>
+               </ol>
+               Test:
+               <ol>
+                  <li>Change the map to zoom level to: <b>5</b>, or any level less than 7.</li>
+                  <li>
+                     Click the cluster marker. The map will &quot;zoom-in&quot; so the data points fit in the map; 
+                     the map zoom level changes from 5 to 7 as a direct result of calling the Google maps .fitBounds() method.  
+                     Clicking on the cluster marker again (at zoom level 7) will cause the map to &quot;zoom-in&quot; 
+                     one level, as explained in the previous test above.
+                  </li>
+               </ol>
+            </div>
+            <input type="radio" id="rbtn1" name="fld_cluster_marker_click_checks" value="0"> 
+            <label for="rbtn1"><b>Disable cluster marker click checks</b></label>
+            <div class="test_div">
+               Test:
+               <ol>
+                  <li>
+                     Make sure the map zoom level is set to: <b>7</b>.
+                  </li>
+                  <li>
+                     Click the cluster marker.  The map will NOT &quot;zoom-in&quot;, because the bounds of the
+                     data points already fit in the map, i.e.: the Google maps .fitBounds() method is called, but 
+                     no action is taken by the map because the data points already fit (the individual data points 
+                     will be shown on the map to illustrate).
+                  </li>
+               </ol>
+               Test 2:
+               <ol>
+                  <li>
+                     Change the map to zoom level to: <b>5</b>, or any level less than 7.
+                  </li>
+                  <li>
+                     Click the cluster marker. The map will &quot;zoom-in&quot; so the data points fit in the map; 
+                     the map zoom level will change from 5 to 7 as a direct result of calling the Google maps .fitBounds() 
+                     method.  Clicking on the cluster marker again (at zoom level 7) will have no effect, as explained
+                     in the previous test above.
+                  </li>
+               </ol>
+            </div>
+         </form>
+      </section>
+   </main>
+   <script>
+      async function map_init() {
+         const { Map } = await google.maps.importLibrary("maps");
+         const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+         tester_obj = new tester( 'mvp' );
+      }
+   </script>
+   <!-- Async script executes immediately and must be AFTER any DOM elements used in callback. -->
+   <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1RpoB4WdH8GQ6odWnELHcnDg6tQi8KWE&loading=async&callback=map_init"></script>
+</body>
+</html>
