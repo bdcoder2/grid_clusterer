@@ -245,7 +245,9 @@ class tester {
             else {
                 n = Math.round(elapsed_ms_to_create_map_markers * 100) / 100;
             }
-            s = '<span style="color:#008000"><b>Data point creation is ' + n + ' times faster</b></span> than creating Google map markers.';
+            if (n > 1) {
+                s = '<span style="color:#008000"><b>Data point creation is ' + n + ' times faster</b></span> than creating Google map markers.';
+            }
         }
         else if (elapsed_ms_to_create_data_points > elapsed_ms_to_create_map_markers) {
             if (elapsed_ms_to_create_map_markers > 0) {
@@ -254,7 +256,9 @@ class tester {
             else {
                 n = Math.round(elapsed_ms_to_create_data_points * 100) / 100;
             }
-            s = '<span style="color:#FF0000"><b>Data point creation is ' + n + ' times slower</b></span> than creating Google map markers.';
+            if (n > 1) {
+                s = '<span style="color:#FF0000"><b>Data point creation is ' + n + ' times slower</b></span> than creating Google map markers.';
+            }
         }
         $('#ts4').html(s);
     }
