@@ -1,11 +1,7 @@
-# grid_clusterer v1.7.0
+# grid_clusterer v1.8.0
 <h2>Release Updates</h2>
 <ul>
-  <li>
-    As of February 21st, 2024, google.maps.Marker is deprecated.  This release uses
-    <a href="https://developers.google.com/maps/documentation/javascript/reference/advanced-markers">&quot;Advanced&quot; markers</a> exclusively.
-  </li>
-  <li>Added support for fractional zoom levels.</li>
+  <li>Performance improvements</li>
 </ul>
 
 </p>
@@ -14,11 +10,11 @@
   Use the following links to learn about the grid clusterer:
 </p>
 <ul>
-  <li><a href="https://bdcoder2.github.io/grid_clusterer/v170/ex1/index.html">Creating data points vs creating Google map markers</a></li>
-  <li><a href="https://bdcoder2.github.io/grid_clusterer/v170/ex0/index.html">Tiles and grid points</a></li>
-  <li><a href="https://bdcoder2.github.io/grid_clusterer/v170/ex2/index.html">Clusterer configuration options and performance</a></li>
-  <li><a href="https://bdcoder2.github.io/grid_clusterer/v170/ex3/index.html">Enabling and disabling cluster marker click checks</a></li>
-  <li><a href="https://bdcoder2.github.io/grid_clusterer/v170/reference.html">Clusterer Reference</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/v180/ex1/index.html">Creating data points vs creating Google map markers</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/v180/ex0/index.html">Tiles and grid points</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/v180/ex2/index.html">Clusterer configuration options and performance</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/v180/ex3/index.html">Enabling and disabling cluster marker click checks</a></li>
+  <li><a href="https://bdcoder2.github.io/grid_clusterer/v180/reference.html">Clusterer Reference</a></li>
 </ul>
 <p>
   <a href="https://bdcoder2.github.io/grid_clusterer/v170/index.html"><img src="snapshot.jpg" height=530 width=703 title="Grid Clusterer"></a>
