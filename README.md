@@ -17,7 +17,7 @@
   <li><a href="https://bdcoder2.github.io/grid_clusterer/v180/reference.html">Clusterer Reference</a></li>
 </ul>
 <p>
-  <a href="https://bdcoder2.github.io/grid_clusterer/v170/index.html"><img src="snapshot.jpg" height=530 width=703 title="Grid Clusterer"></a>
+  <a href="https://bdcoder2.github.io/grid_clusterer/v180/index.html"><img src="https://bdcoder2.github.io/grid_clusterer/v180/snapshot.jpg" height=530 width=703 title="Grid Clusterer"></a>
 </p>
 <h2>To download and use locally:</h1>
 <ol>
