@@ -44,8 +44,8 @@ main {
 }
 
 section {
-   margin: 6px 0;
-   padding: 12px;
+   margin: 0;
+   padding: 6px;
 }
 
 ul {
@@ -80,15 +80,16 @@ ul {
    padding: 6px;
 }
 
+.mzl_div {
+   margin: 0;
+   padding: 6px;
+   text-align:center;
+}
+
 .opt_div {
    margin:0;
    padding:6px;
    text-align:center;
-}
-
-.stats_div {
-   margin: 12px 0 0 0;
-   padding: 0;
 }
 </style>
 </head>
@@ -225,16 +226,19 @@ ul {
          </div>
          <div class="flex_div_right">
             <div class="map_viewport" id="mvp"></div>
+            <div class="mzl_div">
+               <b>Map Zoom Level</b>: <span id="mzl" style="margin: 0 20px 0 0;"></span>
+            </div>
             <section>
-               Map Zoom Level: <span id="mzl" style="margin: 0 20px 0 0;"></span> Time to redraw tiles: <span id="ts5"></span>
-               <div class="stats_div">
+               <b>Time to redraw tiles:</b> <span id="ts5"></span>
+            </section>
+            <section>
                   <b>Initialization Statistics:</b>
                   <ul>
                      <li>Data points created: <span id="ts0"></span></li>
                      <li>Time to create data points: <span id="ts1"></span></li>
                      <li>Time to create cluster object AND load data: <span id="ts2"></span></li>
                   </ul>
-               </div>
             </section>
             <section>
                <b>Notes:</b>
