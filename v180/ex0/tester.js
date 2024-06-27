@@ -44,6 +44,7 @@ class tester {
             alert('* Unable to create map: ' + ex.toString());
             return;
         }
+        this.map_zoom_level_show();
         // Set clusterer options and create clusterer ...
         clusterer_opts = {
             cluster_marker_click_handler: this.cluster_marker_click_handler.bind(this),
@@ -55,6 +56,8 @@ class tester {
         this.clusterer.auto_redraw_event_add('idle');
         // Redraw tiles once all the tiles are loaded ...
         google.maps.event.addListenerOnce(this.map, 'tilesloaded', () => { this.clusterer.redraw(); });
+        // Add map zoom handler ...
+        google.maps.event.addListener(this.map, 'zoom_changed', this.map_zoom_level_show.bind(this));
         // Add map click handler ...
         google.maps.event.addListener(this.map, 'click', this.map_click_handler.bind(this));
     }
@@ -340,5 +343,28 @@ class tester {
         // Show info ...
         s += '</ul>';
         $('#log').html(s);
+    }
+    /*
+    ---------------------------------------------------------------------
+    Map zoom handler.
+     
+    PARAMETERS:
+     
+       Name: evt
+       Desc: A grid_point_marker_click_event object
+ 
+    RETURNS:
+     
+       None
+ 
+    ---------------------------------------------------------------------
+    */
+    map_zoom_level_show() {
+        let s;
+        let z;
+        // Show map zoom level ...
+        z = this.map.getZoom();
+        s = '<b>Map Zoom Level</b>: ' + z.toString();
+        $('#mzl').html(s);
     }
 }

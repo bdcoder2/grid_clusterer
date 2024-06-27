@@ -48,11 +48,25 @@ section {
 .form_div {
    display: inline-block;
    padding: 6px;
-   margin: 0 0 0 12px;
+   text-align: center;
+   margin: 0;
 }
+
+.inst_div {
+   text-align: center;
+   margin: 0;
+   padding: 6px; 
+}
+
+.mzl_div {
+   text-align: center;
+   margin: 0;
+   padding: 4px;
+}
+
 .map_viewport {
    border: 1px solid #AAAAAA;
-   height: 560px;
+   height: 512px;
    width: 100%;
    position: relative;
    background: #EFEFEF;
@@ -71,6 +85,8 @@ section {
       <section>
          <div class="center_div">
             The map below is using the grid clusterer with 200 random data points.
+         </div>
+         <div class="center_div">
             <form id="frm1" onsubmit="tester_obj.config_update( event );"> 
                <div class="form_div">
                   Tile size (pixels) height x width: 
@@ -105,13 +121,13 @@ section {
                </div>
             </form>
          </div>
-      </section>
-      <div id="mvp" class="map_viewport"></div>
-      <section id="log">
-         <div class="center_div">
+         <div class="inst_div">
             <b>Click on the map, a cluster marker or grid point marker to view details.</b>
          </div>
       </section>
+      <div id="mvp" class="map_viewport"></div>
+      <div id="mzl" class="mzl_div"></div>
+      <section id="log"></section>
    </main>
    <script>
       async function map_init() {
