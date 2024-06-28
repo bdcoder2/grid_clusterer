@@ -1,6 +1,11 @@
 # grid_clusterer v1.8.0
 <h2>Release Updates</h2>
 <ul>
+  <li>
+    As of February 21st, 2024, google.maps.Marker is deprecated.  This release uses
+    <a href="https://developers.google.com/maps/documentation/javascript/reference/advanced-markers">&quot;Advanced&quot; markers</a> exclusively.
+  </li>
+  <li>Added support for fractional zoom levels.</li>
   <li>Performance improvements</li>
 </ul>
 
