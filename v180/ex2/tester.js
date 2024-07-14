@@ -1,4 +1,4 @@
-// Source: D:\vscode\grid_clusterer\v180\js\ex2\tester.js
+// Source: D:\vscode\grid_clusterer\v190\js\ex2\tester.js
 class tester {
     /*
     ---------------------------------------------------------------------
@@ -320,6 +320,13 @@ class tester {
             // Redraw tiles ...
             this.clusterer.redraw();
         }
+    }
+    do_test() {
+        let zoom_cur;
+        let zoom_rnd;
+        zoom_cur = this.map.getZoom();
+        zoom_rnd = Math.floor(Math.random() * (22 - 0 + 1) + 0);
+        this.map.setZoom(zoom_rnd);
     }
     /*
     ---------------------------------------------------------------------
