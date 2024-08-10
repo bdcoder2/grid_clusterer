@@ -7,6 +7,13 @@
   </li>
   <li>Added support for fractional zoom levels.</li>
   <li>Performance improvements</li>
+  <li>
+    <b>10-Aug-2024</b>
+      <ul>
+        <li>Added additional checks when data points are loaded / added to ensure latitude / longitude values are valid.</li>
+        <li>Found and fixed bug with tile indexes when fractional zoom levels are enabled.</li>
+      </ul>
+  </li>
 </ul>
 
 </p>
