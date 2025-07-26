@@ -1,4 +1,4 @@
-// Source: D:\vscode\grid_clusterer\v190\js\ex2\tester.js
+// Source: D:\vscode\grid_clusterer\v180\js\ex2\tester.js
 class tester {
     /*
     ---------------------------------------------------------------------
@@ -66,6 +66,11 @@ class tester {
         google.maps.event.addListener(this.map, 'zoom_changed', () => {
             this.info_window_close();
             this.map_zoom_level_show(this.map.getZoom());
+        });
+        // Handler for fractional zoom enable / disable ...
+        $('#fld_fractional_zoom_enabled').on('change', () => {
+            let frac_zoom_enabled = $('#fld_fractional_zoom_enabled').is(':checked');
+            this.map.setOptions({ isFractionalZoomEnabled: frac_zoom_enabled });
         });
         // Test once all tiles are loaded ...
         google.maps.event.addListenerOnce(this.map, 'tilesloaded', () => {
