@@ -4,7 +4,7 @@
   <li>
     <b>26-Jul-2025</b>
     <ul>
-      <li>Added option to enable / disable fractional zoom on <a href="https://bdcoder2.github.io/grid_clusterer/v180/ex2/index.html">Clusterer configuration options and performance</a>
+      <li>Added option to enable / disable fractional zoom on <a href="https://bdcoder2.github.io/grid_clusterer/v180/ex2/index.html">Clusterer configuration options and performance</a> demo.
     </ul>
   </li>
   <li>
@@ -12,7 +12,7 @@
     <a href="https://developers.google.com/maps/documentation/javascript/reference/advanced-markers">&quot;Advanced&quot; markers</a> exclusively.
   </li>
   <li>Added support for fractional zoom levels.</li>
-  <li>Performance improvements</li>
+  <li>Performance improvements.</li>
   <li>
     <b>10-Aug-2024</b>
       <ul>
