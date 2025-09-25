@@ -50,22 +50,9 @@ section {
    padding: 12px;
 }
 
-.map_viewport {
-   height: 256px;
-   width: 100%;
-   position: relative;
-   background: #EFEFEF;
-   display: block;
-   overflow: hidden;
-   border: 1px solid #AAAAAA;
-   margin: 6px 0;
-   padding: 0;
-}
-
-.center_div {
+.padl_20 {
    margin: 0;
-   padding: 6px;
-   text-align: center;
+   padding: 12px 0 0 20px;
 }
 </style>
 </head>
@@ -88,37 +75,42 @@ section {
             omitting the need to create Google map markers as input to a clusterer.
          </p>
          <p>
-            Note we do not display any markers on the map, as we are only measuring the time 
+            Note we do not display any markers on a map, as we are only measuring the time 
             to create them.
          </p>
          <form id="frm1" onsubmit="return tester_obj.test_submit( event );">
-            <div class="center_div">
-               <b>Enter the number of random data points to create within the map bounds:</b>
+            <b>Enter the number of random points to create:</b>
+            <div class="padl_20">
+               <input type="text" size="7" id="fld_dpc" name="fld_dpc" value="10000">
+               <button id="btn_1" type="submit">Run Test</button>
             </div>
-            <div class="center_div">
-               <input type="text" size="7" id="fld_dpc" name="fld_dpc" value="10000"> 
-               <button id="btn1" type="submit">Create New Data Points</button> 
-            </div>
+            <div id="div_dp_results"></div>
+            <div id="div_mm_results"></div>
+            <div id="div_compare_results"></div>            
          </form>
       </section>
       <section>
-         <b>Statistics:</b>
+         <b>Notes</b>
          <ul>
-            <li>Total data points: <span id="ts0"></span></li>
-            <li>Time to create data points: <span id="ts1"></span></li>
-            <li>Time to create Google map markers: <span id="ts2"></span></li>
-            <li>Difference: <span id="ts3"></span></li>
+            <li>
+               Each test allocates an array with a size equal to the number of random (latitude / longitude) points to 
+               create and then populates the array with that number of objects (i.e.: either &quot;data_point&quot;
+               objects or Google map marker objects).  The total time is then displayed.
+            </li>
+            <li>
+               <span style="color:#FF0000"><b>Warning:</b></span> Creating more than 400,000 google map markers will 
+               likely cause your browser to hang, (at least it does on my workstation), the limit will vary depending on 
+               your workstation hardware.
+            </li>
          </ul>
-         <div class="center_div" id="ts4"></div>
       </section>
-      <div class="map_viewport" id="mvp"></div>
    </main>
    <script>
       async function map_init() {
          // Request needed libraries ...
          const { Map } = await google.maps.importLibrary("maps");
          const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-         tester_obj = new tester( 'mvp' );
+         tester_obj = new tester();
       }
    </script>
    <!-- Async script executes immediately and must be AFTER any DOM elements used in callback. -->

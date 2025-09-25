@@ -1,9 +1,9 @@
-// Source: D:\vscode\grid_clusterer\v190\js\ex1\tester.js
+// Source: D:\vscode\grid_clusterer\v180\js\ex1\tester.js
 /*
 =====================================================================
 
 Example that illustrates the performance differences between creating
-data points and Google map markers.
+data_point objects vs Google map markers.
 
 =====================================================================
 */
@@ -14,8 +14,7 @@ class tester {
      
     PARAMETERS:
      
-       Name: mvp_id
-       Desc: The DOM element id used as the map viewport
+       None
  
     RETURNS:
      
@@ -23,62 +22,99 @@ class tester {
  
     ---------------------------------------------------------------------
     */
-    constructor(mvp_id) {
+    constructor() {
+        // Get UI (DOM) objects ...
+        this.k_lat_min = -85.051128;
+        this.k_lat_max = 85.051128;
+        this.k_lon_min = -180;
+        this.k_lon_max = 180;
         this.k_data_points_default = 10000;
         this.k_data_points_min = 1;
-        this.k_data_points_max = 6000000;
-        this.k_submit_btn_id = '#btn1';
-        this.k_fld_data_point_count_id = '#fld_dpc';
-        let map_center;
-        let map_opts;
-        // Initialize ...
-        this.data_points = null;
-        map_center = new google.maps.LatLng(43.308773, -20.660497);
-        map_opts = {
-            center: map_center,
-            gestureHandling: 'greedy',
-            isFractionalZoomEnabled: true,
-            mapId: '99d647e799de5027',
-            mapTypeControl: false,
-            zoom: 3
-        };
-        try {
-            this.map = new google.maps.Map(document.getElementById(mvp_id), map_opts);
-        }
-        catch (ex) {
-            // If unable to create map object, we are doomed, exit ...
-            alert('* Unable to create map: ' + ex.toString());
-            return;
-        }
-        google.maps.event.addListenerOnce(this.map, 'tilesloaded', () => {
-            this.test_compare();
-        });
+        this.k_data_points_max = 10000000;
+        this.k_btn_run_tests_id = "btn_1";
+        this.k_div_dp_results_id = "div_dp_results";
+        this.k_div_mm_results_id = "div_mm_results";
+        this.k_div_compare_results_id = "div_compare_results";
+        this.k_fld_data_point_count_id = 'fld_dpc';
+        this.btn_run_tests = this.jquery_object_get(this.k_btn_run_tests_id);
+        this.div_data_points_results = this.jquery_object_get(this.k_div_dp_results_id);
+        this.div_map_markers_results = this.jquery_object_get(this.k_div_mm_results_id);
+        this.div_compare_results = this.jquery_object_get(this.k_div_compare_results_id);
+        // Create the map bounds that we create points in (nearly the whole earth) ...
+        this.map_bounds = new google.maps.LatLngBounds();
+        this.map_bounds.extend(new google.maps.LatLng(this.k_lat_min, this.k_lon_min));
+        this.map_bounds.extend(new google.maps.LatLng(this.k_lat_max, this.k_lon_max));
+        // Run each test ...
+        this.run_tests();
     }
     /*
     ---------------------------------------------------------------------
-    Create a specific number of random data points within a given
-    LatLngBounds.
+    Return the number of data points to create from a form field
   
     PARAMETERS:
      
-       Name: map_bounds
-       Desc: A google.maps.LatLngBounds object in which data points
-             (latitude and longitude) values will be created.
+       None.
  
-       Name: count
-       Desc: The number of data points to create.
-     
     RETURNS:
      
-       The elapsed time (in ms).
+       The number of data points to create.
  
     ---------------------------------------------------------------------
     */
-    data_points_create(map_bounds, count) {
-        const k_lat_min = -85.051128;
-        const k_lat_max = 85.051128;
-        const k_lon_min = -180;
-        const k_lon_max = 180;
+    data_points_count_get() {
+        let n;
+        // Get the number of points to create ...
+        n = this.form_field_number_get(this.k_fld_data_point_count_id, this.k_data_points_default);
+        if (n < this.k_data_points_min) {
+            n = this.k_data_points_min;
+        }
+        else {
+            if (n > this.k_data_points_max) {
+                n = this.k_data_points_max;
+            }
+        }
+        this.form_field_number_set(this.k_fld_data_point_count_id, n);
+        return n;
+    }
+    /*
+    ---------------------------------------------------------------------
+    Given a DOM element ID, return the JQuery<HTMLElement> for that ID or
+    null.
+  
+    PARAMETERS:
+     
+       Name: id
+       Desc: The id of a DOM element.
+ 
+    RETURNS:
+     
+       A JQuery<HTMLElement> object or null
+ 
+    ---------------------------------------------------------------------
+    */
+    jquery_object_get(id) {
+        let jqo = $('#' + id);
+        if (jqo.length)
+            return jqo;
+        return null;
+    }
+    /*
+    ---------------------------------------------------------------------
+    Create a specific number of random data_point objects within our map
+    boundry.
+ 
+    PARAMETERS:
+     
+       None.
+     
+    RETURNS:
+     
+       None.
+ 
+    ---------------------------------------------------------------------
+    */
+    data_points_create() {
+        let data_points_count;
         let i;
         let lat;
         let lon;
@@ -89,25 +125,40 @@ class tester {
         let n;
         let t0;
         let t1;
-        // Get lat/lon ranges ...
-        lat_min = map_bounds.getSouthWest().lat();
-        lat_span = map_bounds.getNorthEast().lat() - lat_min;
-        lon_min = map_bounds.getSouthWest().lng();
-        lon_span = map_bounds.getNorthEast().lng() - lon_min;
-        // Create array ...
-        this.data_points = new Array(count);
-        // Loop to create data points ...
+        let td;
+        let s;
+        let data_points;
+        // Init ...
+        this.data_points_created = 0;
+        this.elapsed_ms_to_create_data_points = 0;
+        // Create data points array and get time to do so ...
+        data_points_count = this.data_points_count_get();
         t0 = performance.now();
-        for (i = 0; i < count; i++) {
-            n = lat_min + (Math.random() * lat_span);
-            lat = Math.min(Math.max(n, k_lat_min), k_lat_max);
-            n = lon_min + (Math.random() * lon_span);
-            lon = Math.min(Math.max(n, k_lon_min), k_lon_max);
-            this.data_points[i] = { key: i, lat: lat, lon: lon };
-        }
-        // Return elapsed time ...
+        data_points = new Array(data_points_count);
         t1 = performance.now();
-        return (t1 - t0);
+        td = t1 - t0;
+        this.elapsed_ms_to_create_data_points = td;
+        lat_min = this.map_bounds.getSouthWest().lat();
+        lat_span = this.map_bounds.getNorthEast().lat() - lat_min;
+        lon_min = this.map_bounds.getSouthWest().lng();
+        lon_span = this.map_bounds.getNorthEast().lng() - lon_min;
+        t0 = performance.now();
+        for (i = 0; i < data_points_count; i++) {
+            n = lat_min + (Math.random() * lat_span);
+            lat = Math.min(Math.max(n, this.k_lat_min), this.k_lat_max);
+            n = lon_min + (Math.random() * lon_span);
+            lon = Math.min(Math.max(n, this.k_lon_min), this.k_lon_max);
+            data_points[i] = { key: i, lat: lat, lon: lon };
+        }
+        t1 = performance.now();
+        td = t1 - t0;
+        this.elapsed_ms_to_create_data_points += td;
+        this.data_points_created = data_points_count;
+        s = '<ul><li>' + this.data_points_created + ' data_point objects created in ' + this.elapsed_ms_to_create_data_points + ' ms</li></ul>';
+        this.div_data_points_results.html(s);
+        // Release data points array so garbage collection can occur ...
+        data_points.length = 0;
+        data_points = null;
     }
     /*
     ---------------------------------------------------------------------
@@ -123,14 +174,14 @@ class tester {
      
     RETURNS:
      
-       A number that is the field value (or selected value).
+       A number that is the field value (or default value).
  
     ---------------------------------------------------------------------
     */
     form_field_number_get(fld_id, default_val) {
         let n = default_val;
-        let fld = $(fld_id);
-        if (fld) {
+        let fld = $('#' + fld_id);
+        if (fld.length) {
             n = parseInt(fld.val().toString(), 10);
             if (isNaN(n)) {
                 n = default_val;
@@ -141,8 +192,31 @@ class tester {
     }
     /*
     ---------------------------------------------------------------------
-    Create a specific number Google map markers from the data points
-    array.
+    Set the number (value) for an <input type="text" or <select> form field ...
+     
+    PARAMETERS:
+     
+       Name: fld_id
+       Desc: The ID of the DOM / form field.
+ 
+       Name: n
+       Desc: The number to be set for the field.
+     
+    RETURNS:
+     
+       None.
+ 
+    ---------------------------------------------------------------------
+    */
+    form_field_number_set(fld_id, n) {
+        let fld = $('#' + fld_id);
+        if (fld.length) {
+            fld.val(n.toString());
+        }
+    }
+    /*
+    ---------------------------------------------------------------------
+    Create a specific number Google map markers.
   
     PARAMETERS:
      
@@ -150,122 +224,149 @@ class tester {
      
     RETURNS:
      
-       The elapsed time (in ms).
+       None.
  
     ---------------------------------------------------------------------
     */
     google_map_markers_create() {
+        let data_points_count;
         let i;
+        let lat;
+        let lon;
+        let lat_min;
+        let lat_span;
+        let lon_min;
+        let lon_span;
+        let n;
         let t0;
         let t1;
-        let data_pt;
+        let td;
+        let btn_text;
+        let s;
         let markers;
-        t0 = 0;
-        t1 = 0;
-        if (this.data_points) {
-            markers = new Array(this.data_points.length);
-            // Loop to create Google map markers ..
+        // Disable submit button while we are working ...
+        btn_text = this.btn_run_tests.text();
+        this.btn_run_tests.text('Working...');
+        this.btn_run_tests.prop('disabled', true);
+        // Get the number of points to create ...
+        data_points_count = this.data_points_count_get();
+        // Create and populate an array of Google map markers ...
+        this.map_markers_created = 0;
+        this.elapsed_ms_to_create_map_markers = 0;
+        // Create markers array and get time required to do so ...
+        t0 = performance.now();
+        markers = new Array(data_points_count);
+        t1 = performance.now();
+        td = t1 - t0;
+        this.elapsed_ms_to_create_map_markers = td;
+        lat_min = this.map_bounds.getSouthWest().lat();
+        lat_span = this.map_bounds.getNorthEast().lat() - lat_min;
+        lon_min = this.map_bounds.getSouthWest().lng();
+        lon_span = this.map_bounds.getNorthEast().lng() - lon_min;
+        i = 0;
+        const process_chunk = () => {
+            // Process a small chunk of the task ...
             t0 = performance.now();
-            for (i = 0; i < this.data_points.length; i++) {
-                data_pt = this.data_points[i];
-                markers[i] = new google.maps.marker.AdvancedMarkerElement({ map: null, position: new google.maps.LatLng(data_pt.lat, data_pt.lon) });
+            for (let j = 0; j < 10000 && i < data_points_count; j++, i++) {
+                n = lat_min + (Math.random() * lat_span);
+                lat = Math.min(Math.max(n, this.k_lat_min), this.k_lat_max);
+                n = lon_min + (Math.random() * lon_span);
+                lon = Math.min(Math.max(n, this.k_lon_min), this.k_lon_max);
+                markers[i] = new google.maps.marker.AdvancedMarkerElement({ map: null, position: new google.maps.LatLng(lat, lon) });
             }
             t1 = performance.now();
-            // Delete the markers as we only wanted to see how long it takes ...
-            markers.length = 0;
-            markers = null;
-        }
-        // Return elapsed time ...
-        return (t1 - t0);
+            td = t1 - t0;
+            this.elapsed_ms_to_create_map_markers += td;
+            this.map_markers_created = i;
+            // Update UI ...
+            s = '<ul><li>' + this.map_markers_created + ' Google map markers created in ' + this.elapsed_ms_to_create_map_markers + ' ms</li></ul>';
+            this.div_map_markers_results.html(s);
+            // If not done, schedule the next chunk to run after a brief
+            // delay allowing the browser to renter UI updates ...
+            if (i < data_points_count) {
+                setTimeout(process_chunk, 0);
+            }
+            else {
+                // Task completed, release markers array so garbage collection can occur ...
+                markers.length = 0;
+                markers = null;
+                // Re-enable submit button ...
+                this.btn_run_tests.text(btn_text);
+                this.btn_run_tests.prop('disabled', false);
+                this.compare_and_show_results();
+            }
+        };
+        process_chunk();
     }
     /*
     ---------------------------------------------------------------------
-    Test to compare the time required to create a data points array vs an
-    array of Google map markers.
-     
+    Compare the time of each test and show results in the UI ...
+  
     PARAMETERS:
      
-       Name: map_bounds
-       Desc: .
+       None
      
     RETURNS:
      
-       false, to prevent event propagation.
+       None.
  
     ---------------------------------------------------------------------
     */
-    test_compare() {
-        let data_points_count;
-        let elapsed_ms_to_create_data_points;
-        let elapsed_ms_to_create_map_markers;
+    compare_and_show_results() {
         let n;
-        let p;
-        let time_diff;
         let s;
-        let map_bounds;
-        // Get current bounds, if none, exit ...
-        map_bounds = this.map.getBounds();
-        if (!map_bounds) {
-            $('#ts4').html('<b>* Map bounds not initialized yet, try again.</b>');
-            return;
-        }
-        // Get the number of points to create ...
-        data_points_count = this.form_field_number_get(this.k_fld_data_point_count_id, this.k_data_points_default);
-        if (data_points_count < this.k_data_points_min) {
-            data_points_count = this.k_data_points_min;
-        }
-        else {
-            if (data_points_count > this.k_data_points_max) {
-                data_points_count = this.k_data_points_max;
+        s = '';
+        if (this.data_points_created == this.map_markers_created) {
+            // https://math.stackexchange.com/questions/1227389/
+            s = '<ul><li><b>No significant difference in times.</b></li></ul>';
+            if (this.elapsed_ms_to_create_data_points < this.elapsed_ms_to_create_map_markers) {
+                if (this.elapsed_ms_to_create_data_points > 0) {
+                    n = Math.round((this.elapsed_ms_to_create_map_markers / this.elapsed_ms_to_create_data_points) * 100) / 100;
+                }
+                else {
+                    n = Math.round(this.elapsed_ms_to_create_map_markers * 100) / 100;
+                }
+                if (n > 1) {
+                    s = '<ul><li><span style="color:#008000"><b>data_point creation is ' + n + ' times faster</b></span> than creating Google map markers.</li></ul>';
+                }
+            }
+            else if (this.elapsed_ms_to_create_data_points > this.elapsed_ms_to_create_map_markers) {
+                if (this.elapsed_ms_to_create_map_markers > 0) {
+                    n = Math.round((this.elapsed_ms_to_create_data_points / this.elapsed_ms_to_create_map_markers) * 100) / 100;
+                }
+                else {
+                    n = Math.round(this.elapsed_ms_to_create_data_points * 100) / 100;
+                }
+                if (n > 1) {
+                    s = '<ul><li><span style="color:#FF0000"><b>data_point creation is ' + n + ' times slower</b></span> than creating Google map markers.</li></ul>';
+                }
             }
         }
-        $(this.k_fld_data_point_count_id).val(data_points_count);
-        // Delete any previous data points ...
-        if (this.data_points) {
-            this.data_points.length = 0;
-            this.data_points = null;
-        }
-        // Show number of data points in DOM ...
-        $('#ts0').html(data_points_count.toString());
-        // Create the requested number of data points and show elapsed time ...
-        elapsed_ms_to_create_data_points = this.data_points_create(map_bounds, data_points_count);
-        $('#ts1').html(elapsed_ms_to_create_data_points.toString() + " ms");
-        // Create the same number of Google map markers and show elapsed time ...
-        elapsed_ms_to_create_map_markers = this.google_map_markers_create();
-        $('#ts2').html(elapsed_ms_to_create_map_markers.toString() + " ms");
-        // Calculate time difference ...
-        time_diff = elapsed_ms_to_create_data_points - elapsed_ms_to_create_map_markers;
-        $('#ts3').html(time_diff.toString() + " ms");
-        // https://math.stackexchange.com/questions/1227389/
-        s = '<b>No significant difference in creation times.</b>';
-        if (elapsed_ms_to_create_data_points < elapsed_ms_to_create_map_markers) {
-            if (elapsed_ms_to_create_data_points > 0) {
-                n = Math.round((elapsed_ms_to_create_map_markers / elapsed_ms_to_create_data_points) * 100) / 100;
-            }
-            else {
-                n = Math.round(elapsed_ms_to_create_map_markers * 100) / 100;
-            }
-            if (n > 1) {
-                s = '<span style="color:#008000"><b>Data point creation is ' + n + ' times faster</b></span> than creating Google map markers.';
-            }
-        }
-        else if (elapsed_ms_to_create_data_points > elapsed_ms_to_create_map_markers) {
-            if (elapsed_ms_to_create_map_markers > 0) {
-                n = Math.round((elapsed_ms_to_create_data_points / elapsed_ms_to_create_map_markers) * 100) / 100;
-            }
-            else {
-                n = Math.round(elapsed_ms_to_create_data_points * 100) / 100;
-            }
-            if (n > 1) {
-                s = '<span style="color:#FF0000"><b>Data point creation is ' + n + ' times slower</b></span> than creating Google map markers.';
-            }
-        }
-        $('#ts4').html(s);
+        this.div_compare_results.html(s);
     }
     /*
     ---------------------------------------------------------------------
-    Check if we have a map bounds and validate the number of data points
-    to create.
+    Run each test and show results.
+     
+    PARAMETERS:
+     
+       None.
+     
+    RETURNS:
+     
+       None.
+ 
+    ---------------------------------------------------------------------
+    */
+    run_tests() {
+        this.div_compare_results.html('');
+        this.data_points_create();
+        this.google_map_markers_create();
+    }
+    /*
+    ---------------------------------------------------------------------
+    Check which submit button was pressed and perform the associated
+    test.
      
     PARAMETERS:
      
@@ -279,22 +380,9 @@ class tester {
     ---------------------------------------------------------------------
     */
     test_submit(evt) {
-        let btn_text;
         // Prevent default form action ...
         evt.preventDefault();
-        // Disable submit button ...
-        btn_text = $(this.k_submit_btn_id).text();
-        $(this.k_submit_btn_id).html('Working...');
-        $(this.k_submit_btn_id).prop('disabled', true);
-        /*
-        We use setTimeout so the submit button text can be updated
-        and disabled while we build the data points ...
-        */
-        setTimeout(() => {
-            this.test_compare();
-            $(this.k_submit_btn_id).html(btn_text);
-            $(this.k_submit_btn_id).prop('disabled', false);
-        }, 0);
+        this.run_tests();
         // To prevent propagation ...
         return false;
     }
