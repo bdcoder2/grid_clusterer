@@ -1,6 +1,12 @@
 # grid_clusterer v1.8.0
 <h2>Release Updates</h2>
 <ul>
+    <li>
+    <b>25-Sep-2025</b>
+    <ul>
+      <li>Updated <a href="https://bdcoder2.github.io/grid_clusterer/v180/ex1/index.html">Creating data points vs creating Google map markers</a> demo.
+    </ul>
+  </li>
   <li>
     <b>26-Jul-2025</b>
     <ul>
@@ -8,18 +14,18 @@
     </ul>
   </li>
   <li>
-    As of February 21st, 2024, google.maps.Marker is deprecated.  This release uses
-    <a href="https://developers.google.com/maps/documentation/javascript/reference/advanced-markers">&quot;Advanced&quot; markers</a> exclusively.
-  </li>
-  <li>Added support for fractional zoom levels.</li>
-  <li>Performance improvements.</li>
-  <li>
     <b>10-Aug-2024</b>
       <ul>
         <li>Added additional checks when data points are loaded / added to ensure latitude / longitude values are valid.</li>
         <li>Found and fixed bug with tile indexes when fractional zoom levels are enabled.</li>
       </ul>
   </li>
+  <li>
+    As of February 21st, 2024, google.maps.Marker is deprecated.  This release uses
+    <a href="https://developers.google.com/maps/documentation/javascript/reference/advanced-markers">&quot;Advanced&quot; markers</a> exclusively.
+  </li>
+  <li>Added support for fractional zoom levels.</li>
+  <li>Performance improvements.</li>
 </ul>
 
 </p>
