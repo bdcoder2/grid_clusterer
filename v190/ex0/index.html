@@ -1,1 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grid Clusterer v1.9.0 - Configuration options and performance</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link rel="preconnect" href="https://ajax.googleapis.com" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Kalam:300,400%7CSource+Sans+Pro:300,400,600,700" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../js/grid_clusterer.min.js"></script>
+<script src="tester.js"></script>
+<style>
+body, html {
+   background-color: #FFFFFF;
+   margin: 0;
+   padding: 0;
+   font-family: Roboto, Helvetica, sans-serif;
+}
 
+form {
+   border: 1px solid #AAAAAA;
+   margin: 0 6px 0 0;
+   padding: 6px;
+}
+
+header {
+   border-bottom: 1px solid #AAAAAA;
+   font-size: 16pt;
+   font-weight: bold;
+   margin: 6px 12px 0 12px;
+   padding: 6px;
+   text-align: center;
+}
+
+li {
+   padding: 4px 0;
+}
+
+main {
+  margin: 0;
+  padding: 6px 12px;
+}
+
+section {
+   margin: 0;
+   padding: 6px;
+}
+
+ul {
+   margin:0;
+}
+
+.center_div {
+   text-align: center;
+   margin: 0;
+   padding: 0;
+}
+
+.map_viewport {
+    height: 512px;
+    width: 100%;
+    position: relative;
+    background: #EFEFEF;
+    display: block;
+    overflow: hidden;
+    border: 1px solid #AAAAAA;
+    margin: 0;
+    padding: 0;
+}
+
+.flex_div {
+   display: flex;
+}
+
+.flex_div_left {
+   flex: 0 0 240px;
+}
+.flex_div_right {
+   flex: 1;
+}
+
+.config_div {
+   margin: 0;
+   padding: 6px;
+}
+
+.mzl_div {
+   margin: 0;
+   padding: 6px;
+   text-align:center;
+}
+
+.opt_div {
+   margin:0;
+   padding:6px;
+   text-align:center;
+}
+</style>
+</head>
+<body>
+   <header>
+      <a href="../index.html"><b>Grid Clusterer v1.9.0</b></a> - Tiles and grid points
+   </header>
+   <div class="center_div">
+      <p>The map below is using the grid clusterer with <span id="data_points">0</span> random data points.</p>
+      <p><b>Click on the map, a cluster marker or grid point marker to view details.</b></p>
+   </div>
+   <main>
+      <div class="flex_div">
+         <div class="flex_div_left">
+            <form id="frm1" onsubmit="tester_obj.config_update( event );"> 
+               <div class="config_div">
+                  <div class="opt_div">
+                     <b>Map Options</b>
+                  </div>
+                  <div class="opt_div">
+                     Fractional Zoom Enabled:<br>
+                     <input type="checkbox" checked id="fld_fractional_zoom_enabled" name="fld_fractional_zoom_enabled" value="1">
+                  </div>
+               </div>
+               <div class="config_div">
+                  <div class="opt_div">
+                     <b>Clusterer Options</b>
+                  </div>
+                  <div class="opt_div">
+                     Tile height x width (pixels):<br>
+                     <input type="text" size="3" id="fld_tile_height" name="fld_tile_height" value="256"> x 
+                     <input type="text" size="3" id="fld_tile_width" name="fld_tile_width" value="256">
+                  </div>
+                  <div class="opt_div">
+                     Grid rows, columns:<br>
+                     <select id="fld_grid_rows" name="fld_grid_rows">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4" selected>4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                     </select> , 
+                     <select id="fld_grid_cols" name="fld_grid_cols">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4" selected>4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                     </select>
+                  </div>
+                  <div class="opt_div">
+                     <button id="btn2" type="submit">Update Options</button>
+                  </div>
+               </div>
+            </form>
+         </div>
+         <div class="flex_div_right">
+            <div class="map_viewport" id="mvp"></div>
+            <div id="mzl" class="mzl_div"></div>
+            <section id="log"></section>
+         </div>
+      </div>
+   </main>
+   <script>
+      async function map_init() {
+         // Request needed libraries ...
+         const { Map } = await google.maps.importLibrary("maps");
+         const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+         tester_obj = new tester( 'mvp', 37.4220698, -122.0862784 );
+      }
+   </script>
+   <!-- Async script executes immediately and must be AFTER any DOM elements used in callback. -->
+   <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1RpoB4WdH8GQ6odWnELHcnDg6tQi8KWE&loading=async&callback=map_init"></script>
+</body>
+</html>
