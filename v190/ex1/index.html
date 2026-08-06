@@ -1,1 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grid Clusterer v1.9.0 - Creating data points vs creating Google map markers</title>
+<link rel="preconnect" href="https://ajax.googleapis.com" />
+<link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://apis.google.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans_old:400,500|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700&display=swap">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../js/grid_clusterer.min.js"></script>
+<script src="tester.js"></script>
+<style>
+body, html {
+   background-color: #FFFFFF;
+   margin: 0;
+   padding: 0;
+   font-family: Roboto, Helvetica, sans-serif;
+}
 
+form {
+   border: 1px solid #AAAAAA;
+   margin: 0;
+   padding: 6px;
+}
+
+header {
+   border-bottom: 1px solid #AAAAAA;
+   font-size: 16pt;
+   font-weight: bold;
+   margin: 6px 12px 0 12px;
+   padding: 6px;
+   text-align: center;
+}
+
+li {
+   padding: 4px 0;
+}
+
+main {
+  margin: 0;
+  padding: 6px 12px;
+}
+
+section {
+   margin: 6px 0;
+   padding: 12px;
+}
+
+.padl_20 {
+   margin: 0;
+   padding: 12px 0 0 20px;
+}
+</style>
+</head>
+<body>
+   <header>
+      <b><a href="../index.html">Grid Clusterer v1.9.0</a> - Creating data points vs creating Google map markers</b>
+   </header>
+   <main>
+      <section>
+         <p>
+            Nearly every mapping application will use &quot;data points&quot; that contain  
+            latitude and longitude values.  So why not use the latitude and longitude values
+            as input into a clusterer rather than spending time creating Google map markers 
+            for use as input?  The majority of the individual map markers created are never 
+            displayed, which is a waste of memory.
+         </p>
+         <p>
+            In this example, we compare the time required to create &quot;data_point&quot; objects
+            vs creating Google map markers.  The example illustrates the performance gain by 
+            omitting the need to create Google map markers as input to a clusterer.
+         </p>
+         <p>
+            Note we do not display any markers on a map, as we are only measuring the time 
+            to create them.
+         </p>
+         <form id="frm1" onsubmit="return tester_obj.test_submit( event );">
+            <b>Enter the number of random points to create:</b>
+            <div class="padl_20">
+               <input type="text" size="7" id="fld_dpc" name="fld_dpc" value="10000">
+               <button id="btn_1" type="submit">Run Test</button>
+            </div>
+            <div id="div_dp_results"></div>
+            <div id="div_mm_results"></div>
+            <div id="div_compare_results"></div>            
+         </form>
+      </section>
+      <section>
+         <b>Notes</b>
+         <ul>
+            <li>
+               Each test allocates an array with a size equal to the number of random (latitude / longitude) points to 
+               create and then populates the array with that number of objects (i.e.: either &quot;data_point&quot;
+               objects or Google map marker objects).  The total time is then displayed.
+            </li>
+            <li>
+               <span style="color:#FF0000"><b>Warning:</b></span> Creating more than 400,000 google map markers will 
+               likely cause your browser to hang, (at least it does on my workstation), the limit will vary depending on 
+               your workstation hardware.
+            </li>
+         </ul>
+      </section>
+   </main>
+   <script>
+      async function map_init() {
+         // Request needed libraries ...
+         const { Map } = await google.maps.importLibrary("maps");
+         const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+         tester_obj = new tester();
+      }
+   </script>
+   <!-- Async script executes immediately and must be AFTER any DOM elements used in callback. -->
+   <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1RpoB4WdH8GQ6odWnELHcnDg6tQi8KWE&loading=async&callback=map_init"></script>
+</body>
+</html>
