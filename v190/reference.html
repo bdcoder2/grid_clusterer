@@ -575,9 +575,10 @@ clusterer.auto_redraw_event_remove( 'dragend' );
                </p>
                <p>
                   By default, when the clusterer is instantiated, it will use the internal
-                  default cluster marker click handler.  The default handler will call the 
-                  Google maps .fitBounds() method using the latitude / longitude bounds of
-                  the data points associated with the grid tile.
+                  default cluster marker click handler.  The default handler will use the
+                  bounds of the data points associated with the cluster marker and try to zoom
+                  in and center the map on the data bounds.  If an appropriate zoom level cannot be
+                  determined, then the maps zoom level is increased by 1.
                </p>
                <p>
                   You may change the default cluster marker click handler by setting the 
@@ -1615,7 +1616,7 @@ my_cluster_marker_update_handler( evt ) {
    
       evt.tile.marker.title = evt.tile.data_keys.length.toString();
          
-      if ( evt.tile.marker.content ) {
+      if ( evt.tile.marker.children[0] ) {
    
          evt.tile.marker.children[0].textContent = evt.tile.data_keys.length.toString();
    
@@ -1883,7 +1884,7 @@ my_grid_point_marker_update_handler( evt ) {
    
       evt.grid_point.marker.title = evt.grid_point.data_keys.length.toString();
    
-      if ( evt.grid_point.marker.content ) {
+      if ( evt.grid_point.marker.children[0] ) {
    
          evt.grid_point.marker.children[0].textContent = evt.grid_point.data_keys.length.toString();
    
@@ -2322,9 +2323,9 @@ clusterer.configure( opts );
                The clusterer will add the returned marker to the newly created tile.
             </div>
             <b>Example</b>
-            <p>
+            <div class="method_arg">
                See: <a href="#i5_prop_cluster_marker_create_handler">Cluster marker create handler example</a>
-            </p>
+            </div>
          </div>
       </section>
    
