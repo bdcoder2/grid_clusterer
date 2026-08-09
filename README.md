@@ -7,7 +7,8 @@
   </li>
   <li>
     This version no longer requires &quot;cluster marker click checks&quot; that were present in previous versions.  By default, when a cluster marker is clicked on,
-    the clusterer will try to fit / zoom-in on the data bounds of the cluster (does <b>not</b> use the Google maps .fitBounds() method as it does not work for some
+    the clusterer will try to fit / zoom-in on the data bounds of the cluster (does <b>not</b> use the 
+    <a href="https://developers.google.com/maps/documentation/javascript/reference/map#Map.fitBounds" target="_blank">Google maps .fitBounds() method</a> as it does not work for some
     edge cases).  If unable, then the zoom level is simply increased by 1.
   </li>
 </ul>
@@ -31,7 +32,7 @@
   <li>Click on the &quot;grid_clusterer.zip&quot; archive above.</li>
   <li>Click on the &quot;Download&quot; button and save the archive locally.</li>
   <li>Un-zip the grid_clusterer archive</li>
-  <li><b>IMPORTANT</b>: In order to use Google maps, you require a <a href="https://developers.google.com/maps/documentation/javascript/get-api-key">Google maps API key</a>.
+  <li><b>IMPORTANT</b>: In order to use Google maps, you require a <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">Google maps API key</a>.
     <p>Replace the string &quot;<b>[YOUR_API_KEY]</b>&quot; with your Google maps API key in all "index.html" files found in the following directories / files:</p>
     <ul>
       <li>./dist/ex0/index.html</li>
