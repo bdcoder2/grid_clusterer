@@ -7,7 +7,8 @@
   </li>
   <li>
     This version no longer requires &quot;cluster marker click checks&quot; that were present in previous versions.  By default, when a cluster marker is clicked on,
-    the clusterer will use try to fit / zoom-in on the data bounds of the cluster.  If unable, then the zoom level is simply increased by 1.
+    the clusterer will try to fit / zoom-in on the data bounds of the cluster (does <b>not</b> use the Google maps .fitBounds() method as it does not work for some
+    edge cases).  If unable, then the zoom level is simply increased by 1.
   </li>
 </ul>
 
